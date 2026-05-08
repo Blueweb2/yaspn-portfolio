@@ -12,22 +12,14 @@ export default function Home() {
   return (
     <main className="overflow-hidden bg-[#050816] text-white">
       <Navbar />
-
       <HeroSection />
-
       <AboutSection />
-
       <StatsSection />
-
       <ServicesSection />
-
       <FounderSection />
-
       <ProjectsSection />
-
       <ContactSection />
-
       <Footer />
     </main>
   );
-}
+};
