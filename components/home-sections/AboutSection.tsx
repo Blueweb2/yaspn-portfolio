@@ -38,7 +38,7 @@ export default function AboutSection() {
               className="absolute right-0 top-1/2 h-[200px] w-[40%] -translate-y-1/2 overflow-hidden md:h-[300px]"
             >
               <Image
-                src="/placeholder.jpg"
+                src="/city2.webp"
                 alt="building"
                 fill
                 className="object-cover"
