@@ -46,7 +46,7 @@ export default function Navbar() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className={`group relative text-lg font-medium transition ${
+                  className={`group relative text-[14px] font-medium transition ${
                     index === 0
                       ? "text-[#d69a2d]"
                       : "text-white hover:text-[#d69a2d]"

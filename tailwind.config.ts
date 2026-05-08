@@ -4,7 +4,13 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-public-sans)"],
+        sans: [
+          "system-ui",
+          "ui-sans-serif",
+          "sans-serif",
+          '"Apple Color Emoji"',
+          '"Segoe UI Emoji"',
+        ],
       },
     },
   },
