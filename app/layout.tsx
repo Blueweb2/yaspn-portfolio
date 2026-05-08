@@ -1,20 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { roobert } from "@/lib/fonts";
 
 export const metadata: Metadata = {
   title: "YASPN Portfolio",
-  description: "Modern infrastructure and global development company portfolio",
+  description:
+    "Modern infrastructure and global development company portfolio",
 };
 
 export default function RootLayout({
@@ -25,10 +17,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} dark scroll-smooth`}
+      className={`${roobert.variable} dark scroll-smooth`}
       suppressHydrationWarning
     >
-      <body className="min-h-screen bg-[#050816] text-white antialiased">
+      <body className="min-h-screen bg-[#050816] font-sans text-white antialiased">
         {children}
       </body>
     </html>

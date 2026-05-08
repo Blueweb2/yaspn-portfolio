@@ -133,10 +133,7 @@ export default function ContactSection() {
           </div>
         </div>
 
-        {/* Bottom Border */}
-        <div className="mt-16 border-t border-white/10 pt-6 text-center text-sm text-zinc-500">
-          © 2026 YASPN. All rights reserved.
-        </div>
+     
       </Container>
     </section>
   );

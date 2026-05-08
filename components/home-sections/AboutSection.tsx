@@ -12,7 +12,7 @@ export default function AboutSection() {
           <div className="relative h-[450px]">
             <div className="absolute left-0 top-0 h-[320px] w-[80%] overflow-hidden rounded-2xl border border-white/10">
               <Image
-                src="/placeholder.jpg"
+                src="/ground.webp"
                 alt="stadium"
                 fill
                 className="object-cover"

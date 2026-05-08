@@ -59,7 +59,7 @@ export default function FounderSection() {
 
             <div className="relative h-full overflow-hidden rounded-3xl border border-white/10">
               <Image
-                src="/placeholder.jpg"
+                src="/jacob.png"
                 alt="Founder"
                 fill
                 className="object-cover"

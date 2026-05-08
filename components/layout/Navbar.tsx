@@ -30,7 +30,7 @@ export default function Navbar() {
           <Link href="/" className="relative z-20">
             <div className="relative h-20 w-[220px]">
               <Image
-                src="/YASPN WHITE.svg"
+                src="/YASPN-WHITE.svg"
                 alt="YASPN Logo"
                 fill
                 priority
