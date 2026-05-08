@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
+import { Public_Sans } from "next/font/google";
 import "./globals.css";
 
-import { roobert } from "@/lib/fonts";
+const publicSans = Public_Sans({
+  subsets: ["latin"],
+  variable: "--font-public-sans",
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700", "800"],
+});
 
 export const metadata: Metadata = {
-  title: "YASPN Portfolio",
-  description:
-    "Modern infrastructure and global development company portfolio",
+  title: "Yaspin",
+  description: "Modern portfolio platform",
 };
 
 export default function RootLayout({
@@ -15,12 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${roobert.variable} dark scroll-smooth`}
-      suppressHydrationWarning
-    >
-      <body className="min-h-screen bg-[#050816] font-sans text-white antialiased">
+    <html lang="en">
+      <body className={`${publicSans.variable} font-sans antialiased`}>
         {children}
       </body>
     </html>
