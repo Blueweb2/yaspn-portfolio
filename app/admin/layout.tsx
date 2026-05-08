@@ -1,43 +1,152 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
+import { usePathname, useRouter } from "next/navigation";
+
+import Link from "next/link";
+
+import {
+  LayoutDashboard,
+  FolderKanban,
+  BriefcaseBusiness,
+  Settings,
+  LogOut,
+} from "lucide-react";
+
+const sidebarLinks = [
+  {
+    label: "Dashboard",
+    href: "/admin/dashboard",
+    icon: LayoutDashboard,
+  },
+  {
+    label: "Projects",
+    href: "/admin/projects",
+    icon: FolderKanban,
+  },
+  {
+    label: "Services",
+    href: "/admin/services",
+    icon: BriefcaseBusiness,
+  },
+  {
+    label: "Settings",
+    href: "/admin/settings",
+    icon: Settings,
+  },
+];
+
 export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const router = useRouter();
+
+  const pathname = usePathname();
+
+  const [mounted, setMounted] =
+    useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+
+    const token =
+      localStorage.getItem("token");
+
+    if (
+      !token &&
+      pathname !== "/admin/login"
+    ) {
+      router.push("/admin/login");
+    }
+  }, [pathname, router]);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+
+    router.push("/admin/login");
+  };
+
+  if (!mounted) {
+    return null;
+  }
+
+  if (pathname === "/admin/login") {
+    return <>{children}</>;
+  }
+
   return (
-    <div className="min-h-screen bg-[#0b1120] text-white">
-      <div className="flex">
-        {/* Sidebar */}
-        <aside className="w-72 border-r border-white/10 bg-[#111827] p-6">
-          <h2 className="mb-10 text-2xl font-bold">
-            Yaspin Admin
-          </h2>
+    <div className="flex min-h-screen bg-[#0A1224] text-white">
+      {/* Sidebar */}
+      <aside className="flex w-[280px] flex-col border-r border-white/10 bg-[#111C36]">
+        <div className="flex h-20 items-center border-b border-white/10 px-8">
+          <h1 className="text-3xl font-bold">
+            YASPN
+          </h1>
+        </div>
 
-          <nav className="space-y-4">
-            <a
-              href="/admin/dashboard"
-              className="block rounded-lg px-4 py-3 transition hover:bg-white/10"
-            >
-              Dashboard
-            </a>
+        <nav className="flex-1 space-y-2 p-5">
+          {sidebarLinks.map((link) => {
+            const Icon = link.icon;
 
-            <a
-              href="/admin/services"
-              className="block rounded-lg px-4 py-3 transition hover:bg-white/10"
-            >
-              Services
-            </a>
+            const isActive =
+              pathname === link.href;
 
-            <a
-              href="/admin/projects"
-              className="block rounded-lg px-4 py-3 transition hover:bg-white/10"
-            >
-              Projects
-            </a>
-          </nav>
-        </aside>
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`flex h-14 items-center gap-4 rounded-2xl px-5 transition ${
+                  isActive
+                    ? "bg-[#D69A2D] text-white"
+                    : "text-zinc-300 hover:bg-white/5"
+                }`}
+              >
+                <Icon size={22} />
 
-        {/* Content */}
-        <main className="flex-1 p-10">
+                <span className="font-medium">
+                  {link.label}
+                </span>
+              </Link>
+            );
+          })}
+        </nav>
+
+        <div className="border-t border-white/10 p-5">
+          <button
+            onClick={handleLogout}
+            className="flex h-14 w-full items-center gap-4 rounded-2xl px-5 text-zinc-300 transition hover:bg-white/5"
+          >
+            <LogOut size={22} />
+
+            <span className="font-medium">
+              Logout
+            </span>
+          </button>
+        </div>
+      </aside>
+
+      {/* Main Content */}
+      <div className="flex flex-1 flex-col">
+        {/* Topbar */}
+        <header className="flex h-20 items-center justify-between border-b border-white/10 bg-[#111C36]/80 px-8 backdrop-blur-xl">
+          <div>
+            <h2 className="text-2xl font-bold">
+              Admin Panel
+            </h2>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#D69A2D] font-bold">
+              A
+            </div>
+          </div>
+        </header>
+
+        {/* Page Content */}
+        <main className="flex-1 p-8">
           {children}
         </main>
       </div>
