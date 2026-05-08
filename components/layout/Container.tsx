@@ -12,7 +12,7 @@ export default function Container({
   return (
     <div
       className={cn(
-        "mx-auto w-full max-w-9xl px-4 md:px-6 lg:px-8",
+        "mx-auto w-full max-w-[2000px] px-4 md:px-8 lg:px-16",
         className
       )}
     >
