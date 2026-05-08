@@ -14,11 +14,11 @@ const achievements = [
 
 export default function FounderSection() {
   return (
-    <section className="bg-black py-24">
-      <Container>
-        <div className="grid gap-10 rounded-3xl bg-[#0d1b3d] p-10 lg:grid-cols-2 lg:items-center">
-          {/* Left */}
-          <div>
+
+    <section className="bg-[#0d1b3d] py-24">
+      <Container className="flex p-10">
+
+          <div className="w-[70%] bg-[#0d1b3d]">
             <p className="mb-3 text-sm uppercase tracking-[3px] text-[#d69a2d]">
               Chairman & Founder
             </p>
@@ -53,8 +53,7 @@ export default function FounderSection() {
             </Button>
           </div>
 
-          {/* Right */}
-          <div className="relative mx-auto h-[450px] w-full max-w-md">
+          <div className="relative mx-auto h-[450px] w-[30%]">
             <div className="absolute inset-0 translate-x-6 translate-y-6 rounded-3xl border border-white/20" />
 
             <div className="relative h-full overflow-hidden rounded-3xl border border-white/10">
@@ -66,7 +65,7 @@ export default function FounderSection() {
               />
             </div>
           </div>
-        </div>
+
       </Container>
     </section>
   );
