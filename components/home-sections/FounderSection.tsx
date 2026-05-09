@@ -1,6 +1,8 @@
+"use client"
+
 import Image from "next/image";
 import { Check } from "lucide-react";
-
+import { motion } from "framer-motion";
 import Container from "@/components/layout/Container";
 import { Button } from "@/components/ui/button";
 
@@ -14,29 +16,47 @@ const achievements = [
 
 export default function FounderSection() {
   return (
+    <section className="py-10 lg:py-24">
+      <Container className="flex flex-col md:flex-row">
 
-    <section className="bg-[#0d1b3d] py-24">
-      <Container className="flex p-10">
-
-          <div className="w-[70%] bg-[#0d1b3d]">
+          <div className="md:w-[80%] bg-[#0d1b3d] p-5 md:p-10">
             <p className="mb-3 text-sm uppercase tracking-[3px] text-[#d69a2d]">
               Chairman & Founder
             </p>
 
-            <h2 className="mb-6 text-4xl font-bold">
+            <motion.h2
+              initial={{ opacity: 0, x: 120 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1.8 }}
+              viewport={{ once: true }}
+              className="mb-6 text-4xl font-bold"
+            >
               Jacob Cheruvallil
-            </h2>
+            </motion.h2>
 
-            <p className="mb-8 leading-8 text-zinc-300">
+            <motion.p
+              initial={{ opacity: 0, filter: "blur(12px)" }}
+              whileInView={{ opacity: 1, filter: "blur(0px)" }}
+              transition={{ duration: 1.2 }}
+              viewport={{ once: true }}
+              className="mb-8 text-zinc-300 md:md:max-w-[500px] lg:max-w-2xl"
+            >
               Visionary entrepreneur with over 40 years of experience
               in infrastructure development, construction, real estate,
-              and global business operations.
-            </p>
+              and global business operations. across the Middle East & India
+            </motion.p>
 
             <div className="space-y-4">
-              {achievements.map((item) => (
-                <div
+              {achievements.map((item, index) => (
+                <motion.div
                   key={item}
+                  initial={{ opacity: 0, x: 100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{
+                    duration: 1.5,
+                    delay: index * 0.8,
+                  }}
+                  viewport={{ once: true }}
                   className="flex items-start gap-3"
                 >
                   <div className="mt-1 rounded-full bg-[#d69a2d]/20 p-1 text-[#d69a2d]">
@@ -44,19 +64,17 @@ export default function FounderSection() {
                   </div>
 
                   <p className="text-zinc-300">{item}</p>
-                </div>
+                </motion.div>
               ))}
             </div>
 
-            <Button className="mt-10 rounded-full bg-[#d69a2d] text-black hover:bg-[#c58d26]">
+            <Button className="mt-10 rounded-full border border-[#bd8620] bg-[#bd8620] px-6 py-5 text-xs text-white transition-all duration-300 hover:-translate-y-1 hover:bg-transparent hover:text-[#bd8620]">
               View Profile
             </Button>
           </div>
 
-          <div className="relative mx-auto h-[450px] w-[30%]">
-            <div className="absolute inset-0 translate-x-6 translate-y-6 rounded-3xl border border-white/20" />
-
-            <div className="relative h-full overflow-hidden rounded-3xl border border-white/10">
+          <div className="relative md:ml-[-130px] lg:ml-[-190px] mx-auto h-[300px] md:h-[450px] mt-10 w-[70%] md:w-[30%] border-3">
+            <div className="absolute translate-x-9 my-5 bg-blue-700 inset-0 h-[90%]" >
               <Image
                 src="/jacob.png"
                 alt="Founder"
@@ -69,4 +87,4 @@ export default function FounderSection() {
       </Container>
     </section>
   );
-}
+};

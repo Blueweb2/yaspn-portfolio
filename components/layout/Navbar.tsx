@@ -63,9 +63,8 @@ export default function Navbar() {
             </nav>
 
             {/* CTA Button */}
-            <Button className="h-14 rounded-full bg-[#d69a2d] px-8 text-base font-semibold text-white hover:bg-[#c58d26]">
+            <Button className="h-13 rounded-full bg-[#d69a2d] text-[14px] px-8  text-white hover:bg-[#c58d26]">
               Get In Touch
-
               <ArrowRight className="ml-3 size-5" />
             </Button>
           </div>
