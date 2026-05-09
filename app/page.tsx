@@ -5,7 +5,6 @@ import StatsSection from "@/components/home-sections/StatsSection";
 import ServicesSection from "@/components/home-sections/ServicesSection";
 import FounderSection from "@/components/home-sections/FounderSection";
 import ProjectsSection from "@/components/home-sections/ProjectsSection";
-import ContactSection from "@/components/home-sections/ContactSection";
 import Footer from "@/components/layout/Footer";
 
 export default function Home() {
@@ -18,7 +17,6 @@ export default function Home() {
       <ServicesSection />
       <FounderSection />
       <ProjectsSection />
-      <ContactSection />
       <Footer />
     </main>
   );

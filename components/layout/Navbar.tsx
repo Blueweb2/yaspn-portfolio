@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Menu } from "lucide-react";
-
+import { MoveRight, Menu } from "lucide-react";
+import { motion } from "framer-motion";
 import Container from "./Container";
 import { Button } from "@/components/ui/button";
 
@@ -63,10 +63,20 @@ export default function Navbar() {
             </nav>
 
             {/* CTA Button */}
-            <Button className="h-14 rounded-full bg-[#d69a2d] px-8 text-base font-semibold text-white hover:bg-[#c58d26]">
+            <Button className="h-13 rounded-full bg-[#d69a2d] text-[14px] px-8  text-white hover:bg-[#c58d26]">
               Get In Touch
-
-              <ArrowRight className="ml-3 size-5" />
+              
+              <motion.div
+                animate={{ x: [0, 6, 0] }}
+                transition={{
+                  duration: 1,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="ml-2"
+              >
+                <MoveRight className="size-5" />
+              </motion.div>
             </Button>
           </div>
 
@@ -101,7 +111,18 @@ export default function Navbar() {
                   <Button className="mt-6 h-14 rounded-full bg-[#d69a2d] text-base font-semibold text-white hover:bg-[#c58d26]">
                     Get In Touch
 
-                    <ArrowRight className="ml-2 size-5" />
+                    <motion.div
+                      animate={{ x: [0, 6, 0] }}
+                      transition={{
+                        duration: 1,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                      className="ml-2"
+                    >
+                      <MoveRight className="size-5" />
+                    </motion.div>
+
                   </Button>
                 </div>
               </SheetContent>

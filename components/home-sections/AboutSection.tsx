@@ -90,7 +90,7 @@ export default function AboutSection() {
               whileInView={{ filter: "blur(0px)", opacity: 1 }}
               transition={{ duration: 1.5 }}
               viewport={{ once: true }}
-              className="pt-5 text-sm"
+              className="pt-5 text-sm max-w-[700px]"
             >
               YASPN (Youth Athletic Sports Programming Network) specializes in developing global projects across sports infrastructure, education, healthcare, hospitality, and sustainable urban development. Its vision is to create high-quality ecosystems that empower youth, strengthen communities, and generate lasting social and economic impact worldwide. Founded as part of Jacob Group, YASPN is backed by more than 40 years of experience across the Middle East and India.
             </motion.p>
@@ -100,12 +100,12 @@ export default function AboutSection() {
               whileInView={{ filter: "blur(0px)", opacity: 1 }}
               transition={{ duration: 1.5, delay: 0.3 }}
               viewport={{ once: true }}
-              className="pt-3 text-sm"
+              className="pt-3 text-sm max-w-[700px]"
             >
               YASPN has also empowered Jacob’s Trading and Contractors Pvt. Ltd. and the associates of ATG/YASPN — Americas Technology Group Inc. (USA) — to act on its behalf in supporting and delivering global initiatives. Together, they are committed to building impactful projects that create opportunities for young people and contribute to sustainable global development.
             </motion.p>
 
-            <Button className="rounded-full bg-[#d69a2d] px-8 py-6 text-black hover:bg-[#c58d26] mt-5">
+            <Button className="rounded-full bg-[#d69a2d] px-8 py-6 hover:bg-[#c58d26] mt-5">
               Learn More
             </Button>
           </div>
