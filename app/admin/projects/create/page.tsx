@@ -6,10 +6,11 @@ import { useRouter } from "next/navigation";
 
 import { toast } from "sonner";
 
-import { Plus, Trash2 } from "lucide-react";
+import {  Plus, Trash2 } from "lucide-react";
 
 import { createProject } from "@/services/project.api";
 import { getServices } from "@/services/service.api";
+import Image from "next/image";
 
 interface IService {
   _id: string;
@@ -30,6 +31,17 @@ export default function CreateProjectPage() {
 
   const [technologies, setTechnologies] =
     useState([""]);
+        const [thumbnailFile, setThumbnailFile] =
+  useState<File | null>(null);
+
+const [thumbnailPreview, setThumbnailPreview] =
+  useState("");
+
+const [galleryFiles, setGalleryFiles] =
+  useState<File[]>([]);
+
+const [galleryPreview, setGalleryPreview] =
+  useState<string[]>([]);
 
   const [formData, setFormData] =
     useState({
@@ -134,71 +146,127 @@ export default function CreateProjectPage() {
     );
   };
 
-  const handleSubmit = async (
-    e: React.FormEvent
-  ) => {
-    e.preventDefault();
+const handleSubmit = async (
+  e: React.FormEvent
+) => {
+  e.preventDefault();
 
-    try {
-      setLoading(true);
+  const token = localStorage.getItem("token");
 
-      const token =
-        localStorage.getItem(
-          "token"
-        );
+  if (!token) {
+    return toast.error("Unauthorized");
+  }
 
-      if (!token) {
-        return toast.error(
-          "Unauthorized"
-        );
-      }
+  try {
+    setLoading(true);
 
-      const payload = {
-        ...formData,
+    const formDataToSend =
+      new FormData();
 
-        completionYear: Number(
-          formData.completionYear
-        ),
+    // basic fields
 
-        order: Number(
-          formData.order
-        ),
+    formDataToSend.append(
+      "title",
+      formData.title
+    );
 
-        technologies:
-          technologies.filter(
-            Boolean
-          ),
+    formDataToSend.append(
+      "description",
+      formData.description
+    );
 
-        features:
-          features
-            .filter(Boolean)
-            .map((item) => ({
-              label: item,
-            })),
-      };
+    formDataToSend.append(
+      "category",
+      formData.category
+    );
 
-      await createProject(
-        payload as any,
-        token
+    formDataToSend.append(
+      "location",
+      formData.location
+    );
+
+    formDataToSend.append(
+      "client",
+      formData.client
+    );
+
+    formDataToSend.append(
+      "completionYear",
+      String(
+        formData.completionYear
+      )
+    );
+
+    formDataToSend.append(
+      "status",
+      formData.status
+    );
+
+    formDataToSend.append(
+      "order",
+      String(formData.order)
+    );
+
+    // arrays
+
+    formDataToSend.append(
+      "technologies",
+      JSON.stringify(
+        technologies.filter(Boolean)
+      )
+    );
+
+    formDataToSend.append(
+      "features",
+      JSON.stringify(
+        features
+          .filter(Boolean)
+          .map((item) => ({
+            label: item,
+          }))
+      )
+    );
+
+    // thumbnail
+
+    if (thumbnailFile) {
+      formDataToSend.append(
+        "thumbnail",
+        thumbnailFile
       );
-
-      toast.success(
-        "Project created successfully"
-      );
-
-      router.push(
-        "/admin/projects"
-      );
-    } catch (error: any) {
-      toast.error(
-        error?.response?.data
-          ?.message ||
-          "Failed to create project"
-      );
-    } finally {
-      setLoading(false);
     }
-  };
+
+    // gallery
+
+    galleryFiles.forEach((file) => {
+      formDataToSend.append(
+        "gallery",
+        file
+      );
+    });
+
+    await createProject(
+      formDataToSend as any,
+      token
+    );
+
+    toast.success(
+      "Project created successfully"
+    );
+
+    router.push(
+      "/admin/projects"
+    );
+  } catch (error: any) {
+    toast.error(
+      error?.response?.data
+        ?.message ||
+        "Failed to create project"
+    );
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <section className="space-y-8">
@@ -236,7 +304,7 @@ export default function CreateProjectPage() {
           </div>
 
           {/* Slug */}
-          <div>
+          {/* <div>
             <label className="mb-2 block text-sm font-medium text-zinc-300">
               Slug
             </label>
@@ -248,7 +316,7 @@ export default function CreateProjectPage() {
               onChange={handleChange}
               className="h-14 w-full rounded-2xl border border-white/10 bg-[#111C36] px-5 text-white outline-none"
             />
-          </div>
+          </div> */}
 
           {/* Category */}
           <div>
@@ -311,23 +379,91 @@ export default function CreateProjectPage() {
             </select>
           </div>
 
-          {/* Thumbnail */}
-          <div className="md:col-span-2">
-            <label className="mb-2 block text-sm font-medium text-zinc-300">
-              Thumbnail URL
-            </label>
+       {/* Thumbnail Upload */}
 
-            <input
-              type="text"
-              name="thumbnail"
-              value={
-                formData.thumbnail
-              }
-              onChange={handleChange}
-              className="h-14 w-full rounded-2xl border border-white/10 bg-[#111C36] px-5 text-white outline-none"
+<div className="md:col-span-2">
+  <label className="mb-2 block text-sm font-medium text-zinc-300">
+    Thumbnail
+  </label>
+
+  <input
+    type="file"
+    accept="image/*"
+    onChange={(e) => {
+      const file =
+        e.target.files?.[0] || null;
+
+      setThumbnailFile(file);
+
+      if (file) {
+        setThumbnailPreview(
+          URL.createObjectURL(file)
+        );
+      }
+    }}
+    className="block w-full rounded-2xl border border-white/10 bg-[#111C36] p-4 text-white"
+  />
+
+  {thumbnailPreview && (
+    <div className="relative mt-5 h-52 w-full overflow-hidden rounded-2xl">
+      <Image
+        src={thumbnailPreview}
+        alt="Thumbnail Preview"
+        fill
+        className="object-cover"
+      />
+    </div>
+  )}
+</div>
+
+{/* Gallery Upload */}
+
+<div className="md:col-span-2">
+  <label className="mb-2 block text-sm font-medium text-zinc-300">
+    Gallery Images
+  </label>
+
+  <input
+    type="file"
+    multiple
+    accept="image/*"
+    onChange={(e) => {
+      const files = Array.from(
+        e.target.files || []
+      );
+
+      setGalleryFiles(files);
+
+      const previews = files.map(
+        (file) =>
+          URL.createObjectURL(file)
+      );
+
+      setGalleryPreview(previews);
+    }}
+    className="block w-full rounded-2xl border border-white/10 bg-[#111C36] p-4 text-white"
+  />
+
+  {galleryPreview.length > 0 && (
+    <div className="mt-5 grid grid-cols-2 gap-4 md:grid-cols-4">
+      {galleryPreview.map(
+        (image, index) => (
+          <div
+            key={index}
+            className="relative h-36 overflow-hidden rounded-2xl"
+          >
+            <Image
+              src={image}
+              alt="Gallery"
+              fill
+              className="object-cover"
             />
           </div>
-
+        )
+      )}
+    </div>
+  )}
+</div>
           {/* Description */}
           <div className="md:col-span-2">
             <label className="mb-2 block text-sm font-medium text-zinc-300">

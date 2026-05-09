@@ -61,7 +61,7 @@ export default function StatsSection() {
       {/* Bottom SVG Skyline */}
       <div className="absolute bottom-0 left-0 w-full">
         <Image
-          src="/skyline-cut.svg"
+          src="/stats-skyline.svg"
           alt="City Skyline"
           width={1920}
           height={220}

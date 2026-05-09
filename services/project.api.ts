@@ -31,7 +31,7 @@ export const getSingleProject =
   };
 
 export const createProject = async (
-  payload: IProject,
+  payload: FormData,
   token: string
 ) => {
   const response = await axiosInstance.post(
