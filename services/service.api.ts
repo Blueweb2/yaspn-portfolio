@@ -1,6 +1,8 @@
 import { axiosInstance } from "./axios";
 
-import { IService } from "@/types/service.types";
+// =======================
+// GET ALL SERVICES
+// =======================
 
 export const getServices = async () => {
   const response = await axiosInstance.get(
@@ -9,6 +11,10 @@ export const getServices = async () => {
 
   return response.data;
 };
+
+// =======================
+// GET SINGLE SERVICE
+// =======================
 
 export const getSingleService =
   async (slug: string) => {
@@ -20,8 +26,12 @@ export const getSingleService =
     return response.data;
   };
 
+// =======================
+// CREATE SERVICE
+// =======================
+
 export const createService = async (
-  payload: IService,
+  payload: FormData,
   token: string
 ) => {
   const response = await axiosInstance.post(
@@ -37,9 +47,13 @@ export const createService = async (
   return response.data;
 };
 
+// =======================
+// UPDATE SERVICE
+// =======================
+
 export const updateService = async (
   id: string,
-  payload: Partial<IService>,
+  payload: FormData,
   token: string
 ) => {
   const response =
@@ -55,6 +69,10 @@ export const updateService = async (
 
   return response.data;
 };
+
+// =======================
+// DELETE SERVICE
+// =======================
 
 export const deleteService = async (
   id: string,
