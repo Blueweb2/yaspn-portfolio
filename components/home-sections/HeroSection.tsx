@@ -3,22 +3,28 @@ import Image from "next/image";
 import Container from "@/components/layout/Container";
 import { Button } from "@/components/ui/button";
 
+
 export default function HeroSection() {
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden">
-      {/* Background Image */}
-      <Image
-        src="/placeholder.jpg"
-        alt="City"
-        fill
-        priority
-        className="object-cover"
-      />
+      {/* Background Video */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 h-full w-full object-cover"
+      >
+        <source
+          src="/herovideo.mp4"
+          type="video/mp4"
+        />
+      </video>
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/70" />
+      {/* Dark Overlay */}
+      {/* <div className="absolute inset-0 bg-black/70" /> */}
 
-      {/* Gradient */}
+      {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#050816] via-[#050816]/70 to-transparent" />
 
       <Container className="relative z-10 pt-28">
@@ -28,7 +34,7 @@ export default function HeroSection() {
           </p>
 
           <div className="space-y-2">
-            <h1 className="text-5xl font-black leading-tight md:text-7xl">
+            <h1 className="text-5xl font-black leading-tight text-white md:text-7xl">
               VISION INTO
             </h1>
 
@@ -39,8 +45,12 @@ export default function HeroSection() {
 
           <div className="space-y-2 text-2xl font-semibold text-zinc-200 md:text-4xl">
             <p>Inspiring Legacies.</p>
+
             <p>Uplifting Youth.</p>
-            <p className="text-[#d69a2d]">Strengthening Communities.</p>
+
+            <p className="text-[#d69a2d]">
+              Strengthening Communities.
+            </p>
           </div>
 
           <Button className="rounded-full bg-[#d69a2d] px-8 py-6 text-base font-semibold text-black hover:bg-[#c58d26]">
