@@ -105,7 +105,7 @@ export default function AboutSection() {
               YASPN has also empowered Jacob’s Trading and Contractors Pvt. Ltd. and the associates of ATG/YASPN — Americas Technology Group Inc. (USA) — to act on its behalf in supporting and delivering global initiatives. Together, they are committed to building impactful projects that create opportunities for young people and contribute to sustainable global development.
             </motion.p>
 
-            <Button className="rounded-full bg-[#d69a2d] px-8 py-6 text-black hover:bg-[#c58d26] mt-5">
+            <Button className="rounded-full bg-[#d69a2d] px-8 py-6 hover:bg-[#c58d26] mt-5">
               Learn More
             </Button>
           </div>
