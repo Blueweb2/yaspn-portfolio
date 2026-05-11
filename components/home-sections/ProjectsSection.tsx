@@ -73,10 +73,11 @@ export default function ProjectsSection() {
             {projects.map((project) => (
               <Link
                 key={project._id}
-                href={`/projects/${project.slug}`}
-                className="group overflow-hidden rounded-2xl border border-white/10"
+                href="#"
+                className="group block overflow-hidden"
               >
-                <div className="relative h-[420px]">
+                <div className="relative h-[580px] overflow-hidden">
+                  {/* Image */}
                   <Image
                     src={
                       project.thumbnail ||
@@ -84,21 +85,31 @@ export default function ProjectsSection() {
                     }
                     alt={project.title}
                     fill
-                    className="object-cover transition duration-500 group-hover:scale-110"
+                    className="object-cover transition duration-700 group-hover:scale-110"
                   />
 
                   {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/10" />
 
-                  {/* Content */}
-                  <div className="absolute bottom-0 p-6">
-                    <p className="mb-2 text-sm uppercase tracking-[2px] text-[#d69a2d]">
-                      {project.category}
-                    </p>
-
-                    <h3 className="text-2xl font-semibold text-white">
+                  {/* TOP LEFT TITLE */}
+                  <div className="absolute left-10 top-10 z-10">
+                    <h3 className="max-w-[280px] text-[42px] font-light leading-[1.1] text-white">
                       {project.title}
                     </h3>
+                  </div>
+
+                  {/* BOTTOM RIGHT FEATURES */}
+                  <div className="absolute bottom-8 right-8 z-10 flex flex-wrap justify-end gap-3">
+                    {project.features
+                      ?.slice(0, 2)
+                      .map((feature, index) => (
+                        <div
+                          key={index}
+                          className="bg-black/40 px-5 py-3 text-sm font-medium text-white backdrop-blur-sm"
+                        >
+                          {feature.label}
+                        </div>
+                      ))}
                   </div>
                 </div>
               </Link>

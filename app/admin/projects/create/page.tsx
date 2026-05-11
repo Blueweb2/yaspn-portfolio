@@ -405,7 +405,7 @@ export default function CreateProjectPage() {
           </div>
 
           {/* Completion Year */}
-          <div>
+          {/* <div>
             <label className="mb-2 block text-sm font-medium text-zinc-300">
               Completion Year
             </label>
@@ -417,10 +417,10 @@ export default function CreateProjectPage() {
               onChange={handleChange}
               className="h-14 w-full rounded-2xl border border-white/10 bg-[#111C36] px-5 text-white outline-none"
             />
-          </div>
+          </div> */}
 
           {/* Client */}
-          <div>
+          {/* <div>
             <label className="mb-2 block text-sm font-medium text-zinc-300">
               Client
             </label>
@@ -432,7 +432,7 @@ export default function CreateProjectPage() {
               onChange={handleChange}
               className="h-14 w-full rounded-2xl border border-white/10 bg-[#111C36] px-5 text-white outline-none"
             />
-          </div>
+          </div> */}
 
           {/* Location */}
           <div>
@@ -450,7 +450,7 @@ export default function CreateProjectPage() {
           </div>
 
           {/* Live Link */}
-          <div className="md:col-span-2">
+          {/* <div className="md:col-span-2">
             <label className="mb-2 block text-sm font-medium text-zinc-300">
               Live Link
             </label>
@@ -463,7 +463,7 @@ export default function CreateProjectPage() {
               placeholder="https://example.com"
               className="h-14 w-full rounded-2xl border border-white/10 bg-[#111C36] px-5 text-white outline-none"
             />
-          </div>
+          </div> */}
 
           {/* Featured */}
           <div className="md:col-span-2 flex items-center gap-3 rounded-2xl border border-white/10 bg-[#111C36] p-5">
@@ -522,7 +522,7 @@ export default function CreateProjectPage() {
           </div>
 
           {/* Gallery Upload */}
-          <div className="md:col-span-2">
+          {/* <div className="md:col-span-2">
             <label className="mb-2 block text-sm font-medium text-zinc-300">
               Gallery Images
             </label>
@@ -567,10 +567,10 @@ export default function CreateProjectPage() {
                 )}
               </div>
             )}
-          </div>
+          </div> */}
 
           {/* Description */}
-          <div className="md:col-span-2">
+          {/* <div className="md:col-span-2">
             <label className="mb-2 block text-sm font-medium text-zinc-300">
               Description
             </label>
@@ -582,11 +582,11 @@ export default function CreateProjectPage() {
               onChange={handleChange}
               className="w-full rounded-2xl border border-white/10 bg-[#111C36] p-5 text-white outline-none"
             />
-          </div>
+          </div> */}
         </div>
 
         {/* Features */}
-        <div className="rounded-3xl border border-white/10 bg-[#111C36] p-6">
+        {/* <div className="rounded-3xl border border-white/10 bg-[#111C36] p-6">
           <div className="mb-5 flex items-center justify-between">
             <h2 className="text-2xl font-bold text-white">
               Features
@@ -633,10 +633,10 @@ export default function CreateProjectPage() {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
         {/* Technologies */}
-        <div className="rounded-3xl border border-white/10 bg-[#111C36] p-6">
+        {/* <div className="rounded-3xl border border-white/10 bg-[#111C36] p-6">
           <div className="mb-5 flex items-center justify-between">
             <h2 className="text-2xl font-bold text-white">
               Technologies
@@ -685,7 +685,7 @@ export default function CreateProjectPage() {
               )
             )}
           </div>
-        </div>
+        </div> */}
 
         {/* Submit */}
         <button

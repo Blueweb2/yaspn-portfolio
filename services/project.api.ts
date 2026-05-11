@@ -1,13 +1,11 @@
 import { axiosInstance } from "./axios";
 
-import { IProject } from "@/types/project.types";
-
 export const getProjects = async () => {
   const response = await axiosInstance.get(
     "/projects"
   );
 
-  return response.data;
+  return Array.isArray(response.data) ? response.data : response.data.data;
 };
 
 export const getFeaturedProjects =
@@ -17,7 +15,7 @@ export const getFeaturedProjects =
         "/projects/featured"
       );
 
-    return response.data;
+    return Array.isArray(response.data) ? response.data : response.data.data;
   };
 
 export const getSingleProject =
@@ -49,7 +47,7 @@ export const createProject = async (
 
 export const updateProject = async (
   id: string,
-  payload: FormData | Record<string, any>,
+  payload: FormData | Record<string, unknown>,
   token: string
 ) => {
   const response =

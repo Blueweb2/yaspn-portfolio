@@ -9,7 +9,7 @@ export const getServices = async () => {
     "/services"
   );
 
-  return response.data;
+  return Array.isArray(response.data) ? response.data : response.data.data;
 };
 
 // =======================
