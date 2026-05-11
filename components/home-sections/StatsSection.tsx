@@ -29,7 +29,7 @@ const stats = [
 
 export default function StatsSection() {
   return (
-    <section className="relative overflow-hidden bg-[#02040c] pb-62 pt-24">
+    <section className="relative overflow-hidden bg-[#02040c] pb-52 pt-24">
       <Container>
 
         <div className="relative z-10 mb-10 grid grid-cols-2 gap-10 md:grid-cols-4">

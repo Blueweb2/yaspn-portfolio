@@ -43,7 +43,7 @@ export default function ServicesSection() {
   return (
     <section
       id="services"
-      className="relative overflow-hidden py-24"
+      className="relative overflow-hidden pt-6 pb-16"
     >
       {/* Background Image */}
 
@@ -59,7 +59,7 @@ export default function ServicesSection() {
 
         <div className="absolute inset-0 bg-[#08152f]/85" />
 
-        <div className="absolute inset-x-0 top-0 h-52 bg-gradient-to-b from-[#141D33] to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-96 bg-gradient-to-b from-[#141D33] to-transparent" />
       </div>
 
       <Container>
@@ -93,38 +93,42 @@ export default function ServicesSection() {
 
             <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
               {services.map((service) => (
-                <div
-                  key={service._id}
-                  className="group rounded-2xl border border-white/10 bg-[#0d1b3d]/90 p-8 transition duration-300 hover:border-[#d69a2d]"
-                >
-                  {/* ICON */}
+<div
+  key={service._id}
+  className="group relative overflow-hidden border-b-[3px] border-b-[#1B3A5B] bg-[#101d3d]/95 p-10 text-center transition-[background-color] duration-500 ease-out hover:bg-[#245487]"
+>
+  {/* ANIMATED GOLD BOTTOM BORDER */}
 
-                  <div className="mb-4">
-                    <Image
-                      src={
-                        service.icon || ""
-                      }
-                      alt={service.title}
-                      width={60}
-                      height={60}
-                      className="object-contain"
-                    />
-                  </div>
+  <div className="absolute bottom-0 left-0 h-[3px] w-full origin-left scale-x-0 bg-[#F0A516] transition-transform duration-500 ease-out group-hover:scale-x-100" />
 
-                  {/* TITLE */}
 
-                  <h3 className="mb-4 text-2xl font-bold text-white">
-                    {service.title}
-                  </h3>
+  {/* ICON */}
+{/* </div> */}
 
-                  {/* DESCRIPTION */}
+  {/* ICON */}
 
-                  <p className="leading-7 text-zinc-300">
-                    {
-                      service.description
-                    }
-                  </p>
-                </div>
+  <div className="mb-8 flex justify-center">
+    <Image
+      src={service.icon || ""}
+      alt={service.title}
+      width={70}
+      height={70}
+      className="object-contain opacity-90"
+    />
+  </div>
+
+  {/* TITLE */}
+
+  <h3 className="mb-5 text-3xl font-semibold uppercase text-white">
+    {service.title}
+  </h3>
+
+  {/* DESCRIPTION */}
+
+  <p className="mx-auto max-w-[320px] leading-8 text-zinc-200">
+    {service.description}
+  </p>
+</div>
               ))}
             </div>
           )}
