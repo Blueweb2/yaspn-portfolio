@@ -60,7 +60,8 @@ export default function FounderSection() {
                 className="flex items-start gap-3"
               >
                 <div className="mt-1 rounded-full bg-[#d69a2d]/20 p-1 text-[#d69a2d]">
-                  <Check className="size-3" />
+                  {/* <Check className="size-3" /> */}
+                  <img src="/sportsman-icon.svg" alt="" className="w-3"/>
                 </div>
 
                 <p className="text-zinc-300">{item}</p>
