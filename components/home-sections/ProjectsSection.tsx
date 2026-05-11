@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { getProjects } from "@/services/project.api";
 
 import { IProject } from "@/types/project.types";
+import { optimizeCloudinary } from "@/lib/cloudinary";
 
 export default function ProjectsSection() {
   const [projects, setProjects] =
@@ -80,8 +81,11 @@ export default function ProjectsSection() {
                   {/* Image */}
                   <Image
                     src={
-                      project.thumbnail ||
-                      "/placeholder.jpg"
+                      project.thumbnail
+                        ? optimizeCloudinary(
+                          project.thumbnail
+                        )
+                        : "/placeholder.jpg"
                     }
                     alt={project.title}
                     fill

@@ -9,6 +9,7 @@ import Container from "@/components/layout/Container";
 import { getServices } from "@/services/service.api";
 
 import { IService } from "@/types/service.types";
+import { optimizeCloudinary } from "@/lib/cloudinary";
 
 export default function ServicesSection() {
   const [services, setServices] =
@@ -109,10 +110,17 @@ export default function ServicesSection() {
 
                   <div className="mb-8 flex justify-center">
                     <Image
-                      src={service.icon || ""}
+                      src={
+                        service.icon
+                          ? optimizeCloudinary(
+                            service.icon
+                          )
+                          : "/placeholder.svg"
+                      }
                       alt={service.title}
                       width={70}
                       height={70}
+                      sizes="70px"
                       className="object-contain opacity-90"
                     />
                   </div>
