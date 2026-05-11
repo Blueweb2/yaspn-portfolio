@@ -77,10 +77,10 @@ export default function FounderSection() {
         w-[70%] md:w-[30%]">
           <div className="my-5 h-[90%]" >
             <Image
-              src="/jacob new.webp"
+              src="/jacob.png"
               alt="Founder"
               fill
-              className="object-cover"
+              className="object-contain"
             />
           </div>
         </div>

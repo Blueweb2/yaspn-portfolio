@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { MoveRight, Menu } from "lucide-react";
@@ -22,8 +23,27 @@ const navLinks = [
 ];
 
 export default function Navbar() {
+
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 30) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="fixed top-0 z-50 w-full">
+    <header className={`fixed top-0 z-50 w-full ${
+        scrolled ? "bg-black backdrop-blur-md" : "bg-transparent"
+      }`}>
       <Container>
         <div className="flex h-24 items-center justify-between">
           {/* Logo */}
