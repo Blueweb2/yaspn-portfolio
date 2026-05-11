@@ -5,10 +5,9 @@ import Container from "../layout/Container"
 
 const AboutHeroSection = () => {
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden">
+    <section className="relative flex h-[calc(50vh)] items-center overflow-hidden">
       <img src="/about-page-bg.webp" alt="" className="absolute inset-0 h-full w-full object-cover"/>
       <Container className="relative">
-        {/* <h1 className="text-7xl font-bold">ABOUT US</h1> */}
         <motion.h1
           animate={{
             backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
