@@ -172,8 +172,7 @@ export default function ServicesPage() {
                         {services.map((service, index) => (
                             <div
                                 key={service.title}
-                                className="grid overflow-hidden border-b-[3px] border-b-[#1B3A5B] bg-[#112347] md:grid-cols-2"
-                            >
+                                className="group grid overflow-hidden border-b-[3px] border-b-[#1B3A5B] bg-[#112347] transition-all duration-500 md:grid-cols-2"                            >
                                 {/* IMAGE */}
 
                                 <div
@@ -186,13 +185,12 @@ export default function ServicesPage() {
                                         src={service.image}
                                         alt={service.title}
                                         fill
-                                        className="object-cover grayscale"
-                                    />
+                                        className="object-cover grayscale transition duration-700 group-hover:grayscale-0" />
                                 </div>
 
                                 {/* CONTENT */}
 
-                                <div className="flex flex-col justify-center p-8 md:p-12">
+                                <div className="flex flex-col justify-center bg-[#112347] p-8 transition-all duration-500 group-hover:bg-[#194874] md:p-12">
                                     <h2 className="text-3xl font-bold text-[#F0A516]">
                                         {service.title}
                                     </h2>
@@ -234,7 +232,7 @@ export default function ServicesPage() {
             {/* WHY CHOOSE */}
 
             <section className="relative overflow-hidden  pt-24 pb-42">
-                <div className="absolute bottom-0 left-0 right-0 h-40 bg-[url('/city.webp')] bg-cover bg-center opacity-10" />
+                <div className="absolute bottom-0 left-0 right-0 h-40 bg-[url('/services/skyline-cut-grdnt.svg')] bg-cover bg-center opacity-10" />
 
                 <Container>
                     <div className="relative z-10">
