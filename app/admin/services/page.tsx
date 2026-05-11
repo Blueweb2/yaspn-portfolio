@@ -67,7 +67,7 @@ export default function AdminServicesPage() {
 
       const res = await getServices();
 
-      setServices(res.data || []);
+      setServices(res || []);
     } catch (error) {
       console.log(error);
     } finally {
