@@ -79,8 +79,8 @@ export default function CreateProjectPage() {
           const res =
             await getServices();
 
-          setServices(res.data);
-        } catch (error) {
+          setServices(res);
+        } catch {
           toast.error(
             "Failed to fetch services"
           );
@@ -295,10 +295,17 @@ export default function CreateProjectPage() {
       );
 
       router.push("/admin/projects");
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const err = error as {
+        response?: {
+          data?: {
+            message?: string;
+          };
+        };
+      };
+
       toast.error(
-        error?.response?.data
-          ?.message ||
+        err.response?.data?.message ||
         "Failed to create project",
         {
           style: {

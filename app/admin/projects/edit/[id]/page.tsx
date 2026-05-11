@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 
 import { useParams, useRouter } from "next/navigation";
+import Link from "next/link";
 
 import { toast } from "sonner";
 
@@ -17,6 +18,7 @@ import {
 } from "@/services/project.api";
 
 import { getServices } from "@/services/service.api";
+import { IProject } from "@/types/project.types";
 
 interface IService {
   _id: string;
@@ -83,15 +85,11 @@ const [formData, setFormData] =
           getProjects(),
         ]);
 
-        setServices(
-          servicesRes.data
-        );
+        setServices(servicesRes);
 
-        const project =
-          projectsRes.data.find(
-            (item: any) =>
-              item._id === id
-          );
+        const project = projectsRes.find(
+          (item: IProject) => item._id === id
+        );
 
         if (!project) {
           return toast.error(
@@ -133,9 +131,7 @@ const [formData, setFormData] =
 
         setFeatures(
           project.features?.map(
-            (
-              item: any
-            ) => item.label
+            (item: { label: string }) => item.label
           ) || []
         );
 
@@ -143,7 +139,7 @@ const [formData, setFormData] =
           project.technologies ||
             []
         );
-      } catch (error) {
+      } catch {
         toast.error(
           "Failed to fetch project"
         );
@@ -244,33 +240,70 @@ const [formData, setFormData] =
         );
       }
 
-      const payload = {
-        ...formData,
+      const formDataToSend = new FormData();
 
-        completionYear: Number(
-          formData.completionYear
-        ),
-
-        order: Number(
-          formData.order
-        ),
-
-        technologies:
-          technologies.filter(
-            Boolean
-          ),
-
-        features:
+      formDataToSend.append(
+        "title",
+        formData.title
+      );
+      formDataToSend.append(
+        "slug",
+        formData.slug
+      );
+      formDataToSend.append(
+        "description",
+        formData.description
+      );
+      formDataToSend.append(
+        "thumbnail",
+        formData.thumbnail
+      );
+      formDataToSend.append(
+        "category",
+        formData.category
+      );
+      formDataToSend.append(
+        "location",
+        formData.location
+      );
+      formDataToSend.append(
+        "client",
+        formData.client
+      );
+      formDataToSend.append(
+        "completionYear",
+        String(formData.completionYear)
+      );
+      formDataToSend.append(
+        "status",
+        formData.status
+      );
+      formDataToSend.append(
+        "liveLink",
+        formData.liveLink
+      );
+      formDataToSend.append(
+        "order",
+        String(formData.order)
+      );
+      formDataToSend.append(
+        "technologies",
+        JSON.stringify(
+          technologies.filter(Boolean)
+        )
+      );
+      formDataToSend.append(
+        "features",
+        JSON.stringify(
           features
             .filter(Boolean)
-            .map((item) => ({
-              label: item,
-            })),
-      };
+            .map((item) => ({ label: item }))
+        )
+      );
 
       await updateProject(
         id,
-        payload,
+        formDataToSend,
         token
       );
 
@@ -281,10 +314,17 @@ const [formData, setFormData] =
       router.push(
         "/admin/projects"
       );
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const err = error as {
+        response?: {
+          data?: {
+            message?: string;
+          };
+        };
+      };
+
       toast.error(
-        error?.response?.data
-          ?.message ||
+        err.response?.data?.message ||
           "Failed to update project"
       );
     } finally {
@@ -303,14 +343,23 @@ const [formData, setFormData] =
   return (
     <section className="space-y-8">
       {/* Heading */}
-      <div>
-        <h1 className="text-4xl font-bold text-white">
-          Edit Project
-        </h1>
+      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div>
+          <h1 className="text-4xl font-bold text-white">
+            Edit Project
+          </h1>
 
-        <p className="mt-2 text-zinc-400">
-          Update project details.
-        </p>
+          <p className="mt-2 text-zinc-400">
+            Update project details.
+          </p>
+        </div>
+
+        <Link
+          href="/admin/projects"
+          className="rounded-2xl border border-white/10 bg-[#111C36] px-5 py-3 text-sm font-medium text-white transition hover:bg-white/5"
+        >
+          Back to projects
+        </Link>
       </div>
 
       {/* Form */}
@@ -326,6 +375,7 @@ const [formData, setFormData] =
             </label>
 
             <input
+              required
               type="text"
               name="title"
               value={formData.title}
@@ -341,6 +391,7 @@ const [formData, setFormData] =
             </label>
 
             <input
+              required
               type="text"
               name="slug"
               value={formData.slug}
@@ -356,6 +407,7 @@ const [formData, setFormData] =
             </label>
 
             <select
+              required
               name="category"
               value={
                 formData.category
@@ -363,19 +415,15 @@ const [formData, setFormData] =
               onChange={handleChange}
               className="h-14 w-full rounded-2xl border border-white/10 bg-[#111C36] px-5 text-white outline-none"
             >
+              <option value="">Select category</option>
+
               {services.map(
                 (service) => (
                   <option
-                    key={
-                      service._id
-                    }
-                    value={
-                      service.title
-                    }
+                    key={service._id}
+                    value={service.title}
                   >
-                    {
-                      service.title
-                    }
+                    {service.title}
                   </option>
                 )
               )}
@@ -430,6 +478,7 @@ const [formData, setFormData] =
             </label>
 
             <textarea
+              required
               rows={6}
               name="description"
               value={
