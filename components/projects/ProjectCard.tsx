@@ -1,8 +1,8 @@
 import Image from "next/image";
 
-import Link from "next/link";
-
 import { IProject } from "@/types/project.types";
+
+import ProjectDrawer from "./ProjectDrawer";
 
 interface Props {
   project: IProject;
@@ -12,37 +12,52 @@ export default function ProjectCard({
   project,
 }: Props) {
   return (
-    <Link
-      href="#"
-      className="group overflow-hidden"
-    >
-      <div className="relative h-[420px] overflow-hidden rounded-sm">
-        {/* Image */}
-        <Image
-          src={
-            project.thumbnail ||
-            "/placeholder.jpg"
-          }
-          alt={project.title}
-          fill
-          className="object-cover transition duration-700 group-hover:scale-110"
-        />
+    <ProjectDrawer project={project}>
+      <button className="group block w-full overflow-hidden text-left">
+        <div className="relative h-[580px] overflow-hidden">
+          {/* Image */}
+          <Image
+            src={
+              project.thumbnail ||
+              "/placeholder.jpg"
+            }
+            alt={project.title}
+            fill
+            className="object-cover transition duration-700 group-hover:scale-110"
+          />
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/10" />
 
-        {/* Content */}
-        <div className="absolute bottom-0 left-0 p-6">
-          <h2 className="text-4xl font-bold text-white">
-            {project.title}
-          </h2>
+          {/* TOP LEFT TITLE */}
+          <div className="absolute left-10 top-10 z-10">
+            <h3 className="max-w-[280px] text-[42px] font-light leading-[1.1] text-white">
+              {project.title}
+            </h3>
+          </div>
 
-          <p className="mt-2 text-sm text-zinc-300">
-            {project.location ||
-              project.category}
-          </p>
+          {/* BOTTOM RIGHT FEATURES */}
+          <div className="absolute bottom-8 right-8 z-10 flex flex-wrap justify-end gap-3">
+            {project.features
+              ?.slice(0, 2)
+              .map(
+                (
+                  feature,
+                  index
+                ) => (
+                  <div
+                    key={index}
+                    className="bg-black/40 px-5 py-3 text-sm font-medium text-white backdrop-blur-sm"
+                  >
+                    {
+                      feature.label
+                    }
+                  </div>
+                )
+              )}
+          </div>
         </div>
-      </div>
-    </Link>
+      </button>
+    </ProjectDrawer>
   );
 }

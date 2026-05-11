@@ -7,7 +7,7 @@ export default function ProjectsHero() {
     <section className="relative flex h-[70vh] items-center overflow-hidden">
       {/* Background */}
       <Image
-        src="/placeholder.jpg"
+        src="/projectpage.webp"
         alt="Projects Hero"
         fill
         priority

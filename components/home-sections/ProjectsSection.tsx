@@ -98,18 +98,12 @@ export default function ProjectsSection() {
                     </h3>
                   </div>
 
-                  {/* BOTTOM RIGHT FEATURES */}
-                  <div className="absolute bottom-8 right-8 z-10 flex flex-wrap justify-end gap-3">
-                    {project.features
-                      ?.slice(0, 2)
-                      .map((feature, index) => (
-                        <div
-                          key={index}
-                          className="bg-black/40 px-5 py-3 text-sm font-medium text-white backdrop-blur-sm"
-                        >
-                          {feature.label}
-                        </div>
-                      ))}
+                  {/* BOTTOM RIGHT LOCATION */}
+                  <div className="absolute bottom-8 right-8 z-10">
+                    <div className="bg-black/40 px-6 py-4 text-sm font-medium text-white backdrop-blur-sm">
+                      {project.location ||
+                        "Location not specified"}
+                    </div>
                   </div>
                 </div>
               </Link>
