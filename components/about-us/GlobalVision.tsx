@@ -4,33 +4,15 @@ import { motion } from "framer-motion";
 import Container from "../layout/Container";
 
 const content = [
-  `YASPN (Youth Athletic Sports Programming Network) is a
-  next-generation global development platform focused on creating
-  integrated ecosystems that combine sports infrastructure,
-  education, healthcare, hospitality, infrastructure, and sustainable
-  urban development.`,
+  `YASPN (Youth Athletic Sports Programming Network) is a next-generation global development platform focused on creating integrated ecosystems that combine sports infrastructure, education, healthcare, hospitality, infrastructure, and sustainable urban development. Built on innovation, leadership, and long-term vision, YASPN is dedicated to empowering youth, strengthening communities, and delivering transformative projects designed for future generations.`,
 
-  `Built on innovation, leadership, and long-term vision, YASPN is
-  dedicated to empowering youth, strengthening communities, and
-  delivering transformative projects designed for future generations.`,
+  `With a mission to create meaningful social and economic impact worldwide, YASPN develops high-quality environments that inspire growth, opportunity, and community well-being. From world-class sports facilities and educational institutions to healthcare centers, hospitality destinations, and urban developments, every initiative is designed to create lasting value for people and communities around the globe.`,
 
   `With a mission to create meaningful social and economic impact
   worldwide, YASPN develops high-quality environments that inspire
   growth, opportunity, and community well-being.`,
 
-  `From world-class sports facilities and educational institutions to
-  healthcare centers, hospitality destinations, and urban
-  developments, every initiative is designed to create lasting value
-  for people and communities around the globe.`,
-
-  `YASPN was founded as part of Jacob Group, an organization with
-  more than 40 years of business experience across the Middle East
-  and India.`,
-
-  `Backed by the group’s extensive resources, expertise, and
-  industry knowledge, YASPN is positioned to successfully deliver
-  impactful projects on an international scale while maintaining a
-  strong commitment to quality, sustainability, and innovation.`,
+  `To further support its global initiatives, YASPN collaborates with ATG – Americas Technology Group Inc. (USA) and international development associates to deliver transformative projects that create opportunities for future generations and contribute to sustainable global progress.`,
 ];
 
 const ourMissionContent = [
