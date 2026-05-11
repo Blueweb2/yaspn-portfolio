@@ -74,8 +74,8 @@ export default function FounderSection() {
         </div>
 
         <div className="relative md:ml-[-130px] lg:ml-[-190px] mx-auto h-[300px] md:h-[450px] 2xl:h-[600px] my-10 
-        w-[70%] md:w-[30%] border-3">
-          <div className="absolute translate-x-9 my-5 bg-blue-700 inset-0 h-[90%]" >
+        w-[70%] md:w-[30%]">
+          <div className="my-5 h-[90%]" >
             <Image
               src="/jacob new.webp"
               alt="Founder"
