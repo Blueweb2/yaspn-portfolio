@@ -28,6 +28,18 @@ export default function AdminProjectsPage() {
   const [loading, setLoading] =
     useState(true);
 
+    const [thumbnailFile, setThumbnailFile] =
+  useState<File | null>(null);
+
+const [thumbnailPreview, setThumbnailPreview] =
+  useState("");
+
+const [galleryFiles, setGalleryFiles] =
+  useState<File[]>([]);
+
+const [galleryPreview, setGalleryPreview] =
+  useState<string[]>([]);
+
   const fetchProjects = async () => {
     try {
       const res = await getProjects();

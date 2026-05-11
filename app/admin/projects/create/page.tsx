@@ -10,6 +10,7 @@ import { Plus, Trash2 } from "lucide-react";
 
 import { createProject } from "@/services/project.api";
 import { getServices } from "@/services/service.api";
+import Image from "next/image";
 
 interface IService {
   _id: string;
@@ -30,19 +31,44 @@ export default function CreateProjectPage() {
 
   const [technologies, setTechnologies] =
     useState([""]);
+  const [thumbnailFile, setThumbnailFile] =
+    useState<File | null>(null);
+
+  const [thumbnailPreview, setThumbnailPreview] =
+    useState("");
+
+  const [galleryFiles, setGalleryFiles] =
+    useState<File[]>([]);
+
+  const [galleryPreview, setGalleryPreview] =
+    useState<string[]>([]);
 
   const [formData, setFormData] =
     useState({
       title: "",
+
       slug: "",
+
       description: "",
+
       thumbnail: "",
+
       category: "",
+
       location: "",
+
       client: "",
+
       completionYear: "",
-      status: "completed",
+
+      status: "completed" as
+        | "completed"
+        | "ongoing",
+
       liveLink: "",
+
+      featured: false,
+
       order: 0,
     });
 
@@ -139,61 +165,147 @@ export default function CreateProjectPage() {
   ) => {
     e.preventDefault();
 
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      return toast.error("Unauthorized");
+    }
+
     try {
       setLoading(true);
 
-      const token =
-        localStorage.getItem(
-          "token"
-        );
+      const formDataToSend =
+        new FormData();
 
-      if (!token) {
-        return toast.error(
-          "Unauthorized"
-        );
-      }
+      // =========================
+      // BASIC FIELDS
+      // =========================
 
-      const payload = {
-        ...formData,
+      formDataToSend.append(
+        "title",
+        formData.title
+      );
 
-        completionYear: Number(
-          formData.completionYear
-        ),
+      formDataToSend.append(
+        "description",
+        formData.description
+      );
 
-        order: Number(
-          formData.order
-        ),
+      formDataToSend.append(
+        "category",
+        formData.category
+      );
 
-        technologies:
-          technologies.filter(
-            Boolean
-          ),
+      formDataToSend.append(
+        "location",
+        formData.location
+      );
 
-        features:
+      formDataToSend.append(
+        "client",
+        formData.client
+      );
+
+      formDataToSend.append(
+        "completionYear",
+        String(formData.completionYear)
+      );
+
+      formDataToSend.append(
+        "status",
+        formData.status
+      );
+
+      formDataToSend.append(
+        "liveLink",
+        formData.liveLink
+      );
+
+      formDataToSend.append(
+        "featured",
+        String(formData.featured)
+      );
+
+      formDataToSend.append(
+        "order",
+        String(formData.order)
+      );
+
+      // =========================
+      // ARRAYS
+      // =========================
+
+      formDataToSend.append(
+        "technologies",
+        JSON.stringify(
+          technologies.filter(Boolean)
+        )
+      );
+
+      formDataToSend.append(
+        "features",
+        JSON.stringify(
           features
             .filter(Boolean)
             .map((item) => ({
               label: item,
-            })),
-      };
+            }))
+        )
+      );
+
+      // =========================
+      // THUMBNAIL
+      // =========================
+
+      if (thumbnailFile) {
+        formDataToSend.append(
+          "thumbnail",
+          thumbnailFile
+        );
+      }
+
+      // =========================
+      // GALLERY
+      // =========================
+
+      galleryFiles.forEach((file) => {
+        formDataToSend.append(
+          "gallery",
+          file
+        );
+      });
+
+      // =========================
+      // API CALL
+      // =========================
 
       await createProject(
-        payload as any,
+        formDataToSend,
         token
       );
 
       toast.success(
-        "Project created successfully"
+        "Project created successfully",
+        {
+          style: {
+            backgroundColor: "#0f5132",
+            color: "#d1e7dd",
+          },
+        }
       );
 
-      router.push(
-        "/admin/projects"
-      );
+      router.push("/admin/projects");
     } catch (error: any) {
       toast.error(
         error?.response?.data
           ?.message ||
-          "Failed to create project"
+        "Failed to create project",
+        {
+          style: {
+            backgroundColor: "#842029",
+            color: "#f8d7da",
+          },
+        }
       );
     } finally {
       setLoading(false);
@@ -209,8 +321,7 @@ export default function CreateProjectPage() {
         </h1>
 
         <p className="mt-2 text-zinc-400">
-          Add a new project to
-          the portfolio.
+          Add a new project to the portfolio.
         </p>
       </div>
 
@@ -231,21 +342,7 @@ export default function CreateProjectPage() {
               name="title"
               value={formData.title}
               onChange={handleChange}
-              className="h-14 w-full rounded-2xl border border-white/10 bg-[#111C36] px-5 text-white outline-none"
-            />
-          </div>
-
-          {/* Slug */}
-          <div>
-            <label className="mb-2 block text-sm font-medium text-zinc-300">
-              Slug
-            </label>
-
-            <input
-              type="text"
-              name="slug"
-              value={formData.slug}
-              onChange={handleChange}
+              required
               className="h-14 w-full rounded-2xl border border-white/10 bg-[#111C36] px-5 text-white outline-none"
             />
           </div>
@@ -258,32 +355,23 @@ export default function CreateProjectPage() {
 
             <select
               name="category"
-              value={
-                formData.category
-              }
+              value={formData.category}
               onChange={handleChange}
+              required
               className="h-14 w-full rounded-2xl border border-white/10 bg-[#111C36] px-5 text-white outline-none"
             >
               <option value="">
                 Select category
               </option>
 
-              {services.map(
-                (service) => (
-                  <option
-                    key={
-                      service._id
-                    }
-                    value={
-                      service.title
-                    }
-                  >
-                    {
-                      service.title
-                    }
-                  </option>
-                )
-              )}
+              {services.map((service) => (
+                <option
+                  key={service._id}
+                  value={service.title}
+                >
+                  {service.title}
+                </option>
+              ))}
             </select>
           </div>
 
@@ -295,9 +383,7 @@ export default function CreateProjectPage() {
 
             <select
               name="status"
-              value={
-                formData.status
-              }
+              value={formData.status}
               onChange={handleChange}
               className="h-14 w-full rounded-2xl border border-white/10 bg-[#111C36] px-5 text-white outline-none"
             >
@@ -311,21 +397,169 @@ export default function CreateProjectPage() {
             </select>
           </div>
 
-          {/* Thumbnail */}
-          <div className="md:col-span-2">
+          {/* Completion Year */}
+          <div>
             <label className="mb-2 block text-sm font-medium text-zinc-300">
-              Thumbnail URL
+              Completion Year
+            </label>
+
+            <input
+              type="number"
+              name="completionYear"
+              value={formData.completionYear}
+              onChange={handleChange}
+              className="h-14 w-full rounded-2xl border border-white/10 bg-[#111C36] px-5 text-white outline-none"
+            />
+          </div>
+
+          {/* Client */}
+          <div>
+            <label className="mb-2 block text-sm font-medium text-zinc-300">
+              Client
             </label>
 
             <input
               type="text"
-              name="thumbnail"
-              value={
-                formData.thumbnail
-              }
+              name="client"
+              value={formData.client}
               onChange={handleChange}
               className="h-14 w-full rounded-2xl border border-white/10 bg-[#111C36] px-5 text-white outline-none"
             />
+          </div>
+
+          {/* Location */}
+          <div>
+            <label className="mb-2 block text-sm font-medium text-zinc-300">
+              Location
+            </label>
+
+            <input
+              type="text"
+              name="location"
+              value={formData.location}
+              onChange={handleChange}
+              className="h-14 w-full rounded-2xl border border-white/10 bg-[#111C36] px-5 text-white outline-none"
+            />
+          </div>
+
+          {/* Live Link */}
+          <div className="md:col-span-2">
+            <label className="mb-2 block text-sm font-medium text-zinc-300">
+              Live Link
+            </label>
+
+            <input
+              type="text"
+              name="liveLink"
+              value={formData.liveLink}
+              onChange={handleChange}
+              placeholder="https://example.com"
+              className="h-14 w-full rounded-2xl border border-white/10 bg-[#111C36] px-5 text-white outline-none"
+            />
+          </div>
+
+          {/* Featured */}
+          <div className="md:col-span-2 flex items-center gap-3 rounded-2xl border border-white/10 bg-[#111C36] p-5">
+            <input
+              type="checkbox"
+              checked={formData.featured}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  featured: e.target.checked,
+                })
+              }
+              className="h-5 w-5"
+            />
+
+            <label className="text-sm font-medium text-zinc-300">
+              Featured Project
+            </label>
+          </div>
+
+          {/* Thumbnail Upload */}
+          <div className="md:col-span-2">
+            <label className="mb-2 block text-sm font-medium text-zinc-300">
+              Thumbnail
+            </label>
+
+            <input
+              type="file"
+              accept="image/*"
+              required
+              onChange={(e) => {
+                const file =
+                  e.target.files?.[0] || null;
+
+                setThumbnailFile(file);
+
+                if (file) {
+                  setThumbnailPreview(
+                    URL.createObjectURL(file)
+                  );
+                }
+              }}
+              className="block w-full rounded-2xl border border-white/10 bg-[#111C36] p-4 text-white"
+            />
+
+            {thumbnailPreview && (
+              <div className="relative mt-5 h-60 w-full overflow-hidden rounded-2xl">
+                <Image
+                  src={thumbnailPreview}
+                  alt="Thumbnail Preview"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            )}
+          </div>
+
+          {/* Gallery Upload */}
+          <div className="md:col-span-2">
+            <label className="mb-2 block text-sm font-medium text-zinc-300">
+              Gallery Images
+            </label>
+
+            <input
+              type="file"
+              multiple
+              accept="image/*"
+              onChange={(e) => {
+                const files = Array.from(
+                  e.target.files || []
+                );
+
+                setGalleryFiles(files);
+
+                const previews = files.map(
+                  (file) =>
+                    URL.createObjectURL(file)
+                );
+
+                setGalleryPreview(previews);
+              }}
+              className="block w-full rounded-2xl border border-white/10 bg-[#111C36] p-4 text-white"
+            />
+
+            {galleryPreview.length > 0 && (
+              <div className="mt-5 grid grid-cols-2 gap-4 md:grid-cols-4">
+                {galleryPreview.map(
+                  (image, index) => (
+                    <div
+                      key={index}
+                      className="relative h-40 overflow-hidden rounded-2xl"
+                    >
+                      <Image
+                        src={image}
+                        alt="Gallery"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  )
+                )}
+              </div>
+            )}
           </div>
 
           {/* Description */}
@@ -337,9 +571,7 @@ export default function CreateProjectPage() {
             <textarea
               rows={6}
               name="description"
-              value={
-                formData.description
-              }
+              value={formData.description}
               onChange={handleChange}
               className="w-full rounded-2xl border border-white/10 bg-[#111C36] p-5 text-white outline-none"
             />
@@ -359,53 +591,40 @@ export default function CreateProjectPage() {
               className="flex items-center gap-2 rounded-xl bg-[#D69A2D] px-4 py-2 text-sm font-medium text-black"
             >
               <Plus size={16} />
-
               Add
             </button>
           </div>
 
           <div className="space-y-4">
-            {features.map(
-              (
-                feature,
-                index
-              ) => (
-                <div
-                  key={index}
-                  className="flex gap-3"
-                >
-                  <input
-                    type="text"
-                    value={feature}
-                    onChange={(
-                      e
-                    ) =>
-                      handleFeatureChange(
-                        index,
-                        e.target
-                          .value
-                      )
-                    }
-                    placeholder="Feature"
-                    className="h-14 flex-1 rounded-2xl border border-white/10 bg-[#182544] px-5 text-white outline-none"
-                  />
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className="flex gap-3"
+              >
+                <input
+                  type="text"
+                  value={feature}
+                  onChange={(e) =>
+                    handleFeatureChange(
+                      index,
+                      e.target.value
+                    )
+                  }
+                  placeholder="Feature"
+                  className="h-14 flex-1 rounded-2xl border border-white/10 bg-[#182544] px-5 text-white outline-none"
+                />
 
-                  <button
-                    type="button"
-                    onClick={() =>
-                      removeFeature(
-                        index
-                      )
-                    }
-                    className="flex h-14 w-14 items-center justify-center rounded-2xl bg-red-500/15 text-red-400"
-                  >
-                    <Trash2
-                      size={18}
-                    />
-                  </button>
-                </div>
-              )
-            )}
+                <button
+                  type="button"
+                  onClick={() =>
+                    removeFeature(index)
+                  }
+                  className="flex h-14 w-14 items-center justify-center rounded-2xl bg-red-500/15 text-red-400"
+                >
+                  <Trash2 size={18} />
+                </button>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -418,39 +637,28 @@ export default function CreateProjectPage() {
 
             <button
               type="button"
-              onClick={
-                addTechnology
-              }
+              onClick={addTechnology}
               className="flex items-center gap-2 rounded-xl bg-[#D69A2D] px-4 py-2 text-sm font-medium text-black"
             >
               <Plus size={16} />
-
               Add
             </button>
           </div>
 
           <div className="space-y-4">
             {technologies.map(
-              (
-                technology,
-                index
-              ) => (
+              (technology, index) => (
                 <div
                   key={index}
                   className="flex gap-3"
                 >
                   <input
                     type="text"
-                    value={
-                      technology
-                    }
-                    onChange={(
-                      e
-                    ) =>
+                    value={technology}
+                    onChange={(e) =>
                       handleTechnologyChange(
                         index,
-                        e.target
-                          .value
+                        e.target.value
                       )
                     }
                     placeholder="Technology"
@@ -460,15 +668,11 @@ export default function CreateProjectPage() {
                   <button
                     type="button"
                     onClick={() =>
-                      removeTechnology(
-                        index
-                      )
+                      removeTechnology(index)
                     }
                     className="flex h-14 w-14 items-center justify-center rounded-2xl bg-red-500/15 text-red-400"
                   >
-                    <Trash2
-                      size={18}
-                    />
+                    <Trash2 size={18} />
                   </button>
                 </div>
               )
@@ -480,7 +684,7 @@ export default function CreateProjectPage() {
         <button
           type="submit"
           disabled={loading}
-          className="h-14 rounded-2xl bg-[#D69A2D] px-8 font-semibold text-black transition hover:opacity-90"
+          className="h-14 rounded-2xl bg-[#D69A2D] px-8 font-semibold text-black transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
         >
           {loading
             ? "Creating..."
