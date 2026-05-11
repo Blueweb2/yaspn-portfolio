@@ -92,7 +92,7 @@ export default function AboutSection() {
               viewport={{ once: true }}
               className="pt-5 text-sm max-w-[700px]"
             >
-              YASPN (Youth Athletic Sports Programming Network) specializes in developing global projects across sports infrastructure, education, healthcare, hospitality, and sustainable urban development. Its vision is to create high-quality ecosystems that empower youth, strengthen communities, and generate lasting social and economic impact worldwide. Founded as part of Jacob Group, YASPN is backed by more than 40 years of experience across the Middle East and India.
+              YASPN (Youth Athletic Sports Programming Network) is a global project development company in the areas of sport infrastructure, education, health care, hospitality and sustainable urban development. Its vision is the development of high-quality ecosystems that empower youth, strengthen communities, and drive lasting social and economic impact worldwide. The organization is backed by YASPN Group, which has more than 45 years of international business experience in a variety of sectors and regions.
             </motion.p>
 
             <motion.p
@@ -102,7 +102,7 @@ export default function AboutSection() {
               viewport={{ once: true }}
               className="pt-3 text-sm max-w-[700px]"
             >
-              YASPN has also empowered Jacob’s Trading and Contractors Pvt. Ltd. and the associates of ATG/YASPN — Americas Technology Group Inc. (USA) — to act on its behalf in supporting and delivering global initiatives. Together, they are committed to building impactful projects that create opportunities for young people and contribute to sustainable global development.
+              YASPN has also allowed Jacob’s Trading and Contractors Pvt. Ltd. and the associates of ATG/YSPN – Americas Technology Group Inc. (USA) to work on its behalf in supporting and delivering global initiatives. Together, they are dedicated to developing impactful projects that create opportunities for young people and contribute to sustainable global development.
             </motion.p>
 
             <Button className="rounded-full bg-[#d69a2d] px-8 py-6 hover:bg-[#c58d26] mt-5">
