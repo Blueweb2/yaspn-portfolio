@@ -49,7 +49,7 @@ export const createProject = async (
 
 export const updateProject = async (
   id: string,
-  payload: FormData,
+  payload: FormData | Record<string, any>,
   token: string
 ) => {
   const response =
