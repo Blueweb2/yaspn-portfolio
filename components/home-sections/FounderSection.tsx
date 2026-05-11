@@ -19,7 +19,7 @@ export default function FounderSection() {
     <section className="py-10 lg:py-24">
       <Container className="flex flex-col md:flex-row">
 
-        <div className="md:w-[80%] bg-[#0d1b3d] p-5 md:p-10">
+        <div className="md:w-[80%] bg-[#0d1b3d] pl-5 md:pl-10 2xl:pl-32 flex flex-col justify-center">
           <p className="mb-3 text-sm uppercase tracking-[3px] text-[#d69a2d]">
             Chairman & Founder
           </p>
@@ -68,7 +68,7 @@ export default function FounderSection() {
             ))}
           </div>
 
-          <Button className="mt-10 rounded-full border border-[#bd8620] bg-[#bd8620] px-6 py-5 text-xs text-white transition-all duration-300 hover:-translate-y-1 hover:bg-transparent hover:text-[#bd8620]">
+          <Button className="self-start mt-10 rounded-full border border-[#bd8620] bg-[#bd8620] px-6 py-5 text-xs text-white transition-all duration-300 hover:-translate-y-1 hover:bg-transparent hover:text-[#bd8620]">
             View Profile
           </Button>
         </div>

@@ -92,7 +92,7 @@ export default function HeroSection() {
 
           {/* Button */}
           <Button
-            className="mt-10 rounded-full bg-[#c58d26] px-8 py-6 text-base font-semibold hover:bg-[#b47c15]"
+            className="mt-10 rounded-full bg-[#c58d26] px-8 py-6 text-base font-semibold hover:bg-[#184873]"
           >
             Learn More
 

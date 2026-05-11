@@ -83,7 +83,7 @@ export default function Navbar() {
             </nav>
 
             {/* CTA Button */}
-            <Button className="h-13 rounded-full bg-[#d69a2d] text-[14px] px-8  text-white hover:bg-[#c58d26]">
+            <Button className="rounded-full bg-[#d69a2d] text-[13px] text-sm px-4 py-3  text-white hover:bg-[#184873]">
               Get In Touch
               
               <motion.div
@@ -148,6 +148,7 @@ export default function Navbar() {
               </SheetContent>
             </Sheet>
           </div>
+          
         </div>
       </Container>
     </header>
