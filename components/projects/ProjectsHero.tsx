@@ -20,11 +20,9 @@ export default function ProjectsHero() {
       {/* Content */}
       <Container className="relative z-10">
         <div className="max-w-3xl">
-          <p className="mb-4 text-sm uppercase tracking-[4px] text-[#d69a2d]">
-            Our Portfolio
-          </p>
+         
 
-          <h1 className="text-5xl font-black leading-tight text-white md:text-7xl">
+          <h1 className="text-7xl font-black leading-tight text-white md:text-7xl">
             OUR{" "}
             <span className="text-[#d69a2d]">
               PROJECTS
