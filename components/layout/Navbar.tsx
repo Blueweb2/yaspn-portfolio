@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { MoveRight, Menu } from "lucide-react";
@@ -22,8 +23,27 @@ const navLinks = [
 ];
 
 export default function Navbar() {
+
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 30) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="fixed top-0 z-50 w-full">
+    <header className={`fixed top-0 z-50 w-full ${
+        scrolled ? "bg-black backdrop-blur-md" : "bg-transparent"
+      }`}>
       <Container>
         <div className="flex h-24 items-center justify-between">
           {/* Logo */}
@@ -63,7 +83,7 @@ export default function Navbar() {
             </nav>
 
             {/* CTA Button */}
-            <Button className="h-13 rounded-full bg-[#d69a2d] text-[14px] px-8  text-white hover:bg-[#c58d26]">
+            <Button className="rounded-full bg-[#d69a2d] text-[13px] text-sm px-4 py-3  text-white hover:bg-[#184873]">
               Get In Touch
               
               <motion.div
@@ -128,6 +148,7 @@ export default function Navbar() {
               </SheetContent>
             </Sheet>
           </div>
+          
         </div>
       </Container>
     </header>

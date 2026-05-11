@@ -7,7 +7,7 @@ import Container from "@/components/layout/Container";
 const stats = [
   {
     tag: "EXPERIENCE",
-    value: "40+",
+    value: "45+",
     label: "YEARS OF EXPERIENCE",
   },
   {
