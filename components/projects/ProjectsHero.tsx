@@ -38,7 +38,7 @@ export default function ProjectsHero() {
       {/* Skyline */}
       <div className="absolute bottom-0 left-0 w-full">
         <Image
-          src="/stats-skyline.svg"
+          src="/skyline-cut-Navy.svg"
           alt="Skyline"
           width={1920}
           height={180}
