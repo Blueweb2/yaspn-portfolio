@@ -93,42 +93,42 @@ export default function ServicesSection() {
 
             <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
               {services.map((service) => (
-<div
-  key={service._id}
-  className="group relative overflow-hidden border-b-[3px] border-b-[#1B3A5B] bg-[#101d3d]/95 p-10 text-center transition-[background-color] duration-500 ease-out hover:bg-[#245487]"
->
-  {/* ANIMATED GOLD BOTTOM BORDER */}
+                <div
+                  key={service._id}
+                  className="group relative overflow-hidden border-b-[3px] border-b-[#1B3A5B] bg-[#101d3d]/95 p-10 text-center transition-[background-color] duration-500 ease-out hover:bg-[#245487]"
+                >
+                  {/* ANIMATED GOLD BOTTOM BORDER */}
 
-  <div className="absolute bottom-0 left-0 h-[3px] w-full origin-left scale-x-0 bg-[#F0A516] transition-transform duration-500 ease-out group-hover:scale-x-100" />
+                  <div className="absolute bottom-0 left-0 h-[3px] w-full origin-left scale-x-0 bg-[#F0A516] transition-transform duration-500 ease-out group-hover:scale-x-100" />
 
 
-  {/* ICON */}
-{/* </div> */}
+                  {/* ICON */}
+                  {/* </div> */}
 
-  {/* ICON */}
+                  {/* ICON */}
 
-  <div className="mb-8 flex justify-center">
-    <Image
-      src={service.icon || ""}
-      alt={service.title}
-      width={70}
-      height={70}
-      className="object-contain opacity-90"
-    />
-  </div>
+                  <div className="mb-8 flex justify-center">
+                    <Image
+                      src={service.icon || ""}
+                      alt={service.title}
+                      width={70}
+                      height={70}
+                      className="object-contain opacity-90"
+                    />
+                  </div>
 
-  {/* TITLE */}
+                  {/* TITLE */}
 
-  <h3 className="mb-5 text-3xl font-semibold uppercase text-white">
-    {service.title}
-  </h3>
+                  <h3 className="mb-5 text-3xl font-semibold uppercase text-white">
+                    {service.title}
+                  </h3>
 
-  {/* DESCRIPTION */}
+                  {/* DESCRIPTION */}
 
-  <p className="mx-auto max-w-[320px] leading-8 text-zinc-200">
-    {service.description}
-  </p>
-</div>
+                  <p className="mx-auto max-w-[320px] leading-8 text-zinc-200">
+                    {service.description}
+                  </p>
+                </div>
               ))}
             </div>
           )}
