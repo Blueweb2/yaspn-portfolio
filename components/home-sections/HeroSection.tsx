@@ -48,7 +48,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, x: 390 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 2.9 }}
-              className="text-5xl font-black leading-tight text-white md:text-7xl"
+              className="text-5xl font-black text-white md:text-8xl"
             >
               VISION INTO
             </motion.h1>
@@ -57,7 +57,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, x: -190 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 3, delay: 0.2 }}
-              className="text-5xl font-black leading-tight text-[#d69a2d] md:text-7xl"
+              className="text-5xl font-black text-[#d69a2d] md:text-8xl"
             >
               REALITY
             </motion.h1>
@@ -91,17 +91,6 @@ export default function HeroSection() {
           </div>
 
           {/* Button */}
-          {/* <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.3 }}
-          >
-            <Button className="mt-10 rounded-full bg-[#c58d26] px-8 py-6 text-base font-semibold 
-            hover:bg-[#b47c15]">
-              Learn More <MoveRight className="ml-2 size-5" />
-            </Button>
-          </motion.div> */}
-
           <Button
             className="mt-10 rounded-full bg-[#c58d26] px-8 py-6 text-base font-semibold hover:bg-[#b47c15]"
           >
