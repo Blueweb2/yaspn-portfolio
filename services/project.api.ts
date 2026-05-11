@@ -49,7 +49,7 @@ export const createProject = async (
 
 export const updateProject = async (
   id: string,
-  payload: Partial<IProject>,
+  payload: FormData,
   token: string
 ) => {
   const response =
