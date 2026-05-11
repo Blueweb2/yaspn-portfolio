@@ -7,7 +7,7 @@ import Container from "@/components/layout/Container";
 import { Button } from "@/components/ui/button";
 
 const achievements = [
-  "40+ Years of Construction and Infrastructure Leadership",
+  "45+ Years of Construction and Infrastructure Leadership",
   "Delivered landmark residential, hotel and industrial projects",
   "Successfully launched businesses in UAE & Saudi Arabia",
   "Created jobs for 7000+ professionals",
@@ -39,9 +39,9 @@ export default function FounderSection() {
             whileInView={{ opacity: 1, filter: "blur(0px)" }}
             transition={{ duration: 1.2 }}
             viewport={{ once: true }}
-            className="mb-8 text-zinc-300 md:md:max-w-[500px] lg:max-w-2xl"
+            className="mb-8 text-zinc-300 md:md:max-w-[500px] text-[19px] lg:max-w-2xl"
           >
-            Visionary entrepreneur with over 40 years of experience
+            Visionary entrepreneur with over 45 years of experience
             in infrastructure development, construction, real estate,
             and global business operations. across the Middle East & India
           </motion.p>

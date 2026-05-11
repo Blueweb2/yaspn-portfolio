@@ -72,28 +72,30 @@ export default function ContactSection() {
             </div>
 
             {/* Contact Info */}
-            <div className="space-y-6 md:col-span-2 text-xs">
+            <div className="space-y-6 md:col-span-2 text-xs flex-1">
               <div className="flex items-start gap-4">
                 <Phone className="size-4 text-[#d69a2d]" />
                 <p>
-                  +971 50 123 4567
+                  +96 65490 22228
                 </p>
               </div>
 
               <div className="flex items-start gap-4">
                 <Mail className="size-4 text-[#d69a2d]" />
                 <p>
-                  info@yaspn.com
+                  info@jacobsgroupofcompanies.com
                 </p>
               </div>
 
-              <div className="flex items-start justify-center gap-4">
-                <MapPin className="size-4 text-[#d69a2d]" />
+              <div className="flex items-start gap-4">
+                <MapPin className="size-4 shrink-0 text-[#d69a2d]" />
 
-                <p className="justify-center">
-                  PO Box 123456, Dubai,
+                <p>
+                  YASPN Global Company
                   <br />
-                  United Arab Emirates
+                  Building No:3277 Koob Ibn Malik, Al Amamrah Dist.,Dammam, Kingdom of Saudi Arabia
+                  <br />
+                  Postal Code:32415
                 </p>
               </div>
             </div>

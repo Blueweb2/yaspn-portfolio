@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { MoveRight, Menu } from "lucide-react";
@@ -16,15 +17,16 @@ import {
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "About Us", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact Us", href: "#contact" },
+  { label: "About Us", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Projects", href: "/projects" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
 export default function Navbar() {
 
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,24 +64,29 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden items-center gap-14 lg:flex">
             <nav className="flex items-center gap-12">
-              {navLinks.map((item, index) => (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className={`group relative text-[14px] font-medium transition ${
-                    index === 0
-                      ? "text-[#d69a2d]"
-                      : "text-white hover:text-[#d69a2d]"
-                  }`}
-                >
-                  {item.label}
+              {navLinks.map((item, index) => {
 
-                  {/* Active underline */}
-                  {index === 0 && (
-                    <span className="absolute -bottom-4 left-1/2 h-[2px] w-12 -translate-x-1/2 rounded-full bg-white" />
-                  )}
-                </Link>
-              ))}
+                const isActive = pathname === item.href;
+
+                return (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    className={`group relative text-[14px] font-medium transition ${
+                      isActive
+                        ? "text-[#d69a2d]"
+                        : "text-white hover:text-[#d69a2d]"
+                    }`}
+                  >
+                    {item.label}
+
+                    {/* Active underline */}
+                    {isActive && (
+                      <span className="absolute -bottom-4 left-1/2 h-[2px] w-12 -translate-x-1/2 rounded-full bg-white" />
+                    )}
+                  </Link>
+                )
+              })}
             </nav>
 
             {/* CTA Button */}
