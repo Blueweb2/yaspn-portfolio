@@ -41,7 +41,7 @@ export default function FounderSection() {
             viewport={{ once: true }}
             className="mb-8 text-zinc-300 md:md:max-w-[500px] text-[19px] lg:max-w-2xl"
           >
-            Visionary entrepreneur with over 40 years of experience
+            Visionary entrepreneur with over 45 years of experience
             in infrastructure development, construction, real estate,
             and global business operations. across the Middle East & India
           </motion.p>
