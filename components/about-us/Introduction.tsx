@@ -33,9 +33,8 @@ const Introduction = () => {
           </p>
 
           {/* Decorative Quote */}
-          <div className="flex gap-3 mt-8">
-            <div className="w-8 h-8 border border-[#0B5ED7]"></div>
-            <div className="w-8 h-8 border border-[#0B5ED7]"></div>
+          <div>
+            <img src="/QUOTE.svg" alt="" className="w-28 h-28" />
           </div>
 
           {/* Content */}
