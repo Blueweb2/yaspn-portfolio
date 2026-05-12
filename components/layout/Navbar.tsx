@@ -13,6 +13,7 @@ import {
   Sheet,
   SheetContent,
   SheetTrigger,
+  SheetClose
 } from "@/components/ui/sheet";
 
 const navLinks = [
@@ -124,13 +125,14 @@ export default function Navbar() {
               >
                 <div className="mt-14 flex h-full flex-col">
                   {navLinks.map((item) => (
-                    <Link
-                      key={item.label}
-                      href={item.href}
-                      className="text-lg font-semibold text-zinc-200 transition hover:text-[#d69a2d]"
-                    >
-                      {item.label}
-                    </Link>
+                    <SheetClose asChild key={item.label}>
+                      <Link
+                        href={item.href}
+                        className="text-lg font-semibold text-zinc-200 transition hover:text-[#d69a2d]"
+                      >
+                        {item.label}
+                      </Link>
+                    </SheetClose>
                   ))}
 
                   <Button className="mt-10 h-14 w-full rounded-full bg-[#d69a2d] text-base font-semibold text-white hover:bg-[#c58d26]">
