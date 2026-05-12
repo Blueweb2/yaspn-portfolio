@@ -2,9 +2,14 @@
 
 import { useEffect, useState } from "react";
 
-import { usePathname, useRouter } from "next/navigation";
+import {
+  usePathname,
+  useRouter,
+} from "next/navigation";
 
 import Link from "next/link";
+
+import Image from "next/image";
 
 import {
   LayoutDashboard,
@@ -30,11 +35,7 @@ const sidebarLinks = [
     href: "/admin/services",
     icon: BriefcaseBusiness,
   },
-  {
-    label: "Settings",
-    href: "/admin/settings",
-    icon: Settings,
-  },
+
 ];
 
 export default function AdminLayout({
@@ -81,12 +82,21 @@ export default function AdminLayout({
     <div className="flex min-h-screen bg-[#0A1224] text-white">
       {/* Sidebar */}
       <aside className="flex w-[280px] flex-col border-r border-white/10 bg-[#111C36]">
+        
+        {/* Logo */}
         <div className="flex h-20 items-center border-b border-white/10 px-8">
-          <h1 className="text-3xl font-bold">
-            YASPN
-          </h1>
+          <div className="relative h-14 w-[160px]">
+            <Image
+              src="/YASPN-WHITE.svg"
+              alt="YASPN Logo"
+              fill
+              priority
+              className="object-contain"
+            />
+          </div>
         </div>
 
+        {/* Navigation */}
         <nav className="flex-1 space-y-2 p-5">
           {sidebarLinks.map((link) => {
             const Icon = link.icon;
@@ -114,6 +124,7 @@ export default function AdminLayout({
           })}
         </nav>
 
+        {/* Logout */}
         <div className="border-t border-white/10 p-5">
           <button
             onClick={handleLogout}
@@ -130,6 +141,7 @@ export default function AdminLayout({
 
       {/* Main Content */}
       <div className="flex flex-1 flex-col">
+        
         {/* Topbar */}
         <header className="flex h-20 items-center justify-between border-b border-white/10 bg-[#111C36]/80 px-8 backdrop-blur-xl">
           <div>
@@ -138,6 +150,7 @@ export default function AdminLayout({
             </h2>
           </div>
 
+          {/* Admin Avatar */}
           <div className="flex items-center gap-4">
             <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#D69A2D] font-bold">
               A

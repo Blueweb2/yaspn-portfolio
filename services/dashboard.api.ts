@@ -7,15 +7,15 @@ export const getDashboardStats =
         "/dashboard/stats"
       );
 
-    return res.data.data;
+    return res.data.data || {};
   };
 
 export const getLatestProjects =
   async () => {
     const res =
       await axiosInstance.get(
-        "/projects/latest"
+        "/dashboard/latest-projects"
       );
 
-    return res.data.data;
+    return Array.isArray(res.data.data) ? res.data.data : [];
   };

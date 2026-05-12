@@ -5,7 +5,6 @@ import Link from "next/link";
 import {
   FolderKanban,
   BriefcaseBusiness,
-  Mail,
   Users,
   Plus,
 } from "lucide-react";
@@ -20,19 +19,30 @@ import {
   getLatestProjects,
 } from "@/services/dashboard.api";
 
+interface DashboardStats {
+  projects: number;
+  services: number;
+  users: number;
+}
+
+interface LatestProject {
+  title: string;
+  category: string;
+  status: string;
+}
+
 const statIcons = {
   projects: FolderKanban,
   services: BriefcaseBusiness,
-  messages: Mail,
   users: Users,
 };
 
 export default function AdminDashboardPage() {
   const [stats, setStats] =
-    useState<any>(null);
+    useState<DashboardStats | null>(null);
 
   const [projects, setProjects] =
-    useState<any[]>([]);
+    useState<LatestProject[]>([]);
 
   const [loading, setLoading] =
     useState(true);
@@ -50,8 +60,8 @@ export default function AdminDashboardPage() {
           setStats(statsData);
 
           setProjects(projectsData);
-        } catch (error) {
-          console.error(error);
+        } catch {
+          console.error("Failed to load dashboard data");
         } finally {
           setLoading(false);
         }
@@ -74,13 +84,6 @@ export default function AdminDashboardPage() {
         stats?.services || 0,
       icon:
         statIcons.services,
-    },
-    {
-      title: "Messages",
-      value:
-        stats?.messages || 0,
-      icon:
-        statIcons.messages,
     },
     {
       title: "Users",
@@ -172,10 +175,11 @@ export default function AdminDashboardPage() {
           </div>
 
           <div className="space-y-4">
-            {projects.map(
-              (project) => (
+            {projects && projects.length > 0 ? (
+              projects.map(
+                (project) => (
                 <div
-                  key={project._id}
+                  key={project.title}
                   className="flex items-center justify-between rounded-2xl border border-white/5 bg-[#182544] p-5"
                 >
                   <div>
@@ -204,6 +208,11 @@ export default function AdminDashboardPage() {
                   </div>
                 </div>
               )
+            )
+            ) : (
+              <div className="text-center text-zinc-400 py-8">
+                No projects yet
+              </div>
             )}
           </div>
         </div>
