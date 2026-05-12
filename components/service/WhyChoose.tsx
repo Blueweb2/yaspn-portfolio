@@ -29,7 +29,7 @@ const reasons = [
 
 const WhyChoose = () => {
   return (
-    <section className="relative   pt-24 pb-42">
+    <section className="relative pb-36 md:pt-10 md:pb-42">
 
       <Container>
         <div className="relative z-10 pb-10">
@@ -39,7 +39,7 @@ const WhyChoose = () => {
             </h2>
           </div>
 
-          <div className="mt-20 grid gap-10 md:grid-cols-3 xl:grid-cols-5 ">
+          <div className="mt-10 md:mt-20 grid gap-10 md:grid-cols-3 xl:grid-cols-5">
             {reasons.map((reason, index) => (
               
               <motion.div
@@ -118,7 +118,7 @@ const WhyChoose = () => {
         <img
           src="/services/skyline-cut-grdnt.svg"
           alt="City Skyline"
-          className="block w-full object-cover"
+          className="block h-[200px] md:h-[300px] lg:h-auto w-full object-cover"
         />
       </div>
 
