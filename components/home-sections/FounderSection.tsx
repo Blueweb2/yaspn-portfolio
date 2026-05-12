@@ -19,7 +19,7 @@ export default function FounderSection() {
     <section className="py-10 lg:py-24">
       <Container className="flex flex-col-reverse md:flex-row">
 
-        <div className="md:w-[80%] bg-[#0d1b3d] pl-5 py-5 md:pl-10 2xl:pl-32 flex flex-col justify-center">
+        <div className="md:w-[80%] bg-[#0d1b3d] pt-36 md:pt-5 pl-5 py-5 md:pl-10 2xl:pl-32 flex flex-col justify-center">
           <p className="mb-3 text-sm uppercase tracking-[3px] text-[#d69a2d]">
             Chairman & Founder
           </p>
@@ -98,7 +98,7 @@ export default function FounderSection() {
             ease: [0.22, 1, 0.36, 1],
           }}
           viewport={{ once: true }}
-          className="relative mx-auto my-10 h-[300px] w-[70%] md:ml-[-130px] md:h-[450px] md:w-[30%] lg:ml-[-190px] 2xl:h-[600px]"
+          className="relative mx-auto my-10 h-[300px] w-[70%] md:ml-[-130px] md:h-[450px] md:w-[30%] lg:ml-[-190px] 2xl:h-[600px] mb-[-95px]"
         >
           
           {/* Glow Background */}

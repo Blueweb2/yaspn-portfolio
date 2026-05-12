@@ -11,6 +11,43 @@ export default function AboutSection() {
       <Container>
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
 
+          {/* HEADING FOR SMALL DEVICE */}
+          <div className="lg:hidden">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="mb-3 text-sm uppercase tracking-[3px] text-[#d69a2d]"
+            >
+              About YASPN
+            </motion.p>
+
+            <motion.h2 className="max-w-xl text-[24px] font-bold leading-tight md:text-3xl">
+              {/* First Line */}
+              <motion.span
+                initial={{ opacity: 0, x: -100 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1.9 }}
+                viewport={{ once: true }}
+                className="block"
+              >
+                A Global Vision
+              </motion.span>
+
+              {/* Second Line */}
+              <motion.span
+                initial={{ opacity: 0, x: 100 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1.9, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="block"
+              >
+                for a Better Tomorrow
+              </motion.span>
+            </motion.h2>
+          </div>
+
           {/* Images */}
           <div className="relative h-[300px] md:h-[450px]">
             {/* Large Image */}
@@ -49,7 +86,8 @@ export default function AboutSection() {
           {/* Content */}
           <div className="h-full">
 
-            <div>
+            {/* HEADING FOR SMALL LARGE DEVICE */}
+            <div className="hidden lg:block">
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -92,7 +130,7 @@ export default function AboutSection() {
               viewport={{ once: true }}
               className="pt-5 text-sm max-w-[530px]"
             >
-              YASPN (Youth Athletic Sports Programming Network) is a global project development company in the areas of sport infrastructure, education, health care, hospitality and sustainable urban development. Its vision is the development of high-quality ecosystems that empower youth, strengthen communities, and drive lasting social and economic impact worldwide. The organization is backed by YASPN Group, which has more than 45 years of international business experience in a variety of sectors and regions.
+              YASPN (Youth Athletic Sports Programming Network) is a global project development company in the areas of sport infrastructure, education, health care, hospitality and sustainable urban development. Its vision is the development of high-quality ecosystems that empower youth, strengthen communities, and drive lasting social and economic impact worldwide. The organization is backed by JACOBS Group, which has more than 45 years of international business experience in a variety of sectors and regions.
             </motion.p>
 
             <motion.p
