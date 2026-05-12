@@ -570,7 +570,7 @@ export default function CreateProjectPage() {
           </div> */}
 
           {/* Description */}
-          {/* <div className="md:col-span-2">
+          <div className="md:col-span-2">
             <label className="mb-2 block text-sm font-medium text-zinc-300">
               Description
             </label>
@@ -582,7 +582,7 @@ export default function CreateProjectPage() {
               onChange={handleChange}
               className="w-full rounded-2xl border border-white/10 bg-[#111C36] p-5 text-white outline-none"
             />
-          </div> */}
+          </div>
         </div>
 
         {/* Features */}

@@ -1,3 +1,10 @@
+"use client";
+
+import { useState } from "react";
+
+import { toast } from "sonner";
+
+import { sendContactMessage } from "@/services/contact.api";
 import {
   Mail,
   MapPin,
@@ -11,6 +18,79 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 export default function ContactSection() {
+
+  const [formData, setFormData] =
+    useState({
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    });
+
+  const [loading, setLoading] =
+    useState(false);
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement
+    >
+  ) => {
+    setFormData({
+      ...formData,
+
+      [e.target.name]:
+        e.target.value,
+    });
+  };
+
+  const handleSubmit = async (
+    e: React.FormEvent
+  ) => {
+    e.preventDefault();
+
+    try {
+      setLoading(true);
+
+      await sendContactMessage({
+        firstName:
+          formData.name,
+
+        lastName: "",
+
+        email:
+          formData.email,
+
+        phone: "",
+
+        company: "",
+
+        service:
+          formData.subject,
+
+        location: "",
+
+        message:
+          formData.message,
+      });
+
+      toast.success(
+        "Message sent successfully"
+      );
+
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    } catch {
+      toast.error(
+        "Failed to send message"
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <section
       id="contact"
@@ -108,37 +188,60 @@ export default function ContactSection() {
               Contact Us
             </h3>
 
-            <div className="space-y-6">
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-6"
+            >
               <Input
                 placeholder="Your Name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
                 className="rounded-none border-0 border-b border-white/40 bg-transparent px-0 text-white placeholder:text-zinc-300 focus-visible:ring-0"
               />
 
               <Input
+                type="email"
                 placeholder="Your Email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
                 className="rounded-none border-0 border-b border-white/40 bg-transparent px-0 text-white placeholder:text-zinc-300 focus-visible:ring-0"
               />
 
               <Input
                 placeholder="Subject"
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
                 className="rounded-none border-0 border-b border-white/40 bg-transparent px-0 text-white placeholder:text-zinc-300 focus-visible:ring-0"
               />
 
               <Textarea
                 placeholder="Your Message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
                 rows={3}
                 className="rounded-none border-0 border-b border-white/40 bg-transparent px-0 text-white placeholder:text-zinc-300 focus-visible:ring-0"
               />
 
-              <Button className="mt-3 h-14 w-full rounded-none bg-[#d69a2d] text-base font-semibold text-white hover:bg-[#c58d26]">
-                Send Message
+              <Button
+                type="submit"
+                disabled={loading}
+                className="mt-3 h-14 w-full rounded-none bg-[#d69a2d] text-base font-semibold text-white hover:bg-[#c58d26]"
+              >
+                {loading
+                  ? "Sending..."
+                  : "Send Message"}
+
                 <ArrowRight className="ml-2 size-5" />
               </Button>
-            </div>
+            </form>
           </div>
         </div>
 
-     
+
       </Container>
 
       <Container className="py-10">
