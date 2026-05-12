@@ -43,7 +43,7 @@ export default function ProjectsSection() {
   }, []);
 
   return (
-    <section className="bg-[#08142d] pt-24 pb-46">
+    <section className="relative overflow-hidden bg-[#08142d] pt-24 pb-64">
       <Container>
         {/* Header */}
         <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-center">
@@ -77,7 +77,7 @@ export default function ProjectsSection() {
                 href="#"
                 className="group block overflow-hidden"
               >
-                <div className="relative h-[520px] overflow-hidden">
+                <div className="relative h-[480px] overflow-hidden">
                   {/* Image */}
                   <Image
                     src={
@@ -115,6 +115,16 @@ export default function ProjectsSection() {
           </div>
         )}
       </Container>
+      {/* Bottom Skyline SVG */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden">
+        <Image
+          src="/skyline-cut-Black.svg"
+          alt="City Skyline"
+          width={1920}
+          height={220}
+          className="h-auto w-full object-cover opacity-90"
+        />
+      </div>
     </section>
   );
 }
