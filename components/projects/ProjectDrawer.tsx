@@ -6,6 +6,7 @@ import {
     Sheet,
     SheetContent,
     SheetTrigger,
+    SheetClose,
 } from "@/components/ui/sheet";
 
 import { IProject } from "@/types/project.types";
@@ -28,8 +29,10 @@ export default function ProjectDrawer({
 
             <SheetContent
                 side="right"
-                className="w-full overflow-y-auto border-none bg-[#f7f7f5] p-0 text-black sm:max-w-5xl"
+                className="!w-[100vw] sm:!w-[92vw] md:!w-[60vw] lg:!w-[40vw] xl:!w-[45vw] !max-w-none overflow-y-auto border-none bg-[#f7f7f5] p-0 text-black"
             >
+                {/* Close Button */}
+
                 {/* Thumbnail */}
                 <div className="relative h-[420px] w-full bg-zinc-200">
                     <Image
