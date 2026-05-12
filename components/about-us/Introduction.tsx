@@ -11,7 +11,7 @@ const Introduction = () => {
           Chairman Message
         </h1>
 
-        <div className="relative z-10 px-6 flex flex-col items-center text-center pb-28">
+        <div className="relative z-10 px-6 flex flex-col items-center text-center pb-36">
           
           {/* Profile Image */}
           <div className="relative w-[240px] sm:w-[280px] md:w-[320px] mt-[-90px]">
