@@ -297,7 +297,7 @@ const Contact = () => {
           <img
             src="/skyline-cut-Black.svg"
             alt="City Skyline"
-            className="block w-full object-cover"
+            className="block h-[200px] md:h-[300px] lg:h-auto w-full object-cover"
           />
         </div>
     </section>
