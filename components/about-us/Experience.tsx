@@ -98,7 +98,7 @@ export default function Experience() {
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 viewport={{ once: true }}
-                className="text-6xl font-light text-white transition-all duration-500 group-hover:text-[#d69a2d]"
+                className="text-4xl md:text-5xl lg:text-6xl font-light text-white transition-all duration-500 group-hover:text-[#d69a2d]"
               >
                 {item.value}
               </motion.h3>

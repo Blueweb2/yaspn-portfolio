@@ -83,7 +83,7 @@ const HeroSection = () => {
                   duration: 3.2,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="max-w-4xl text-5xl font-black leading-tight md:text-7xl"
+                className="max-w-4xl text-5xl font-bold leading-tight md:text-7xl"
               >
                 BUILDING{" "}
                 

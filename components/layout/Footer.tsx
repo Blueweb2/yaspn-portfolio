@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { toast } from "sonner";
 import { sendContactMessage } from "@/services/contact.api";
 import {
@@ -14,6 +15,14 @@ import Container from "@/components/layout/Container";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+
+const footerLinks = [
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Projects", href: "/projects" },
+  { label: "Contact Us", href: "/contact" },
+];
 
 export default function ContactSection() {
 
@@ -158,25 +167,14 @@ export default function ContactSection() {
             <div className="w-full lg:flex-1 flex items-start lg:items-center lg:justify-center">
               {/* Navigation */}
               <div className="space-y-5 text-base text-zinc-200">
-                <p className="cursor-pointer hover:text-[#d69a2d]">
-                  Home
-                </p>
-
-                <p className="cursor-pointer hover:text-[#d69a2d]">
-                  About Us
-                </p>
-
-                <p className="cursor-pointer hover:text-[#d69a2d]">
-                  Services
-                </p>
-
-                <p className="cursor-pointer hover:text-[#d69a2d]">
-                  Projects
-                </p>
-
-                <p className="cursor-pointer hover:text-[#d69a2d]">
-                  Contact Us
-                </p>
+                {footerLinks.map(({href, label}) => (
+                  <Link
+                    href={href}
+                    className="block cursor-pointer hover:text-[#d69a2d]"
+                  >
+                    {label}
+                  </Link>
+                ))}
               </div>
             </div>
 

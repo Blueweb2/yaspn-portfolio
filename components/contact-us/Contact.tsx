@@ -30,9 +30,9 @@ const Contact = () => {
                 ease: [0.22, 1, 0.36, 1],
               }}
               viewport={{ once: true }}
-              className="text-5xl font-extrabold uppercase leading-tight md:text-6xl"
+              className="text-5xl font-bold leading-tight md:text-7xl"
             >
-              Contact Us
+              CONTACT US
             </motion.h2>
 
             <AnimatedLine />

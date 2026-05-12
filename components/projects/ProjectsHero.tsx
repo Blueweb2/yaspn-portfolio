@@ -19,9 +19,8 @@ export default function ProjectsHero() {
 
       {/* Content */}
       <Container className="relative z-10 lg:pb-10">
-        <div className="max-w-3xl">
-         
-          <h1 className="text-5xl md:font-black leading-tight text-white md:text-7xl">
+        <div>
+          <h1 className="text-5xl font-bold leading-tight text-white text-transparent md:text-7xl">
             OUR{" "}
             <span className="text-[#d69a2d]">
               PROJECTS
