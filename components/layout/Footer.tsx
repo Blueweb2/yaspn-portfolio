@@ -100,13 +100,14 @@ export default function ContactSection() {
       <div className="absolute inset-x-0 top-0 h-44 bg-[url('/skyline.png')] bg-cover bg-center opacity-90" />
 
       <Container className="relative">
-        <div className="grid gap-16 lg:grid-cols-[1fr_420px] lg:items-end border-b border-gray-500 pb-10">
+        <div className="grid gap-10 lg:gap-16 lg:grid-cols-[1fr_420px] lg:items-end border-b border-gray-700 pb-10">
+
 
           {/* Left Content */}
-          <div className="flex items-start justify-between">
+          <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
 
             {/* Logo */}
-            <div className="flex-1">
+            <div className="w-full lg:flex-1">
               <div className="relative h-20 w-[130px]">
                 <Image
                   src="/YASPN-WHITE.svg"
@@ -130,7 +131,7 @@ export default function ContactSection() {
             </div>
 
             {/* Footer Links */}
-            <div className="flex-1 flex items-center justify-center">
+            <div className="w-full lg:flex-1 flex items-start lg:items-center lg:justify-center">
               {/* Navigation */}
               <div className="space-y-4 text-xs">
                 <p className="cursor-pointer hover:text-[#d69a2d]">
@@ -152,7 +153,7 @@ export default function ContactSection() {
             </div>
 
             {/* Contact Info */}
-            <div className="space-y-6 md:col-span-2 text-xs flex-1">
+            <div className="space-y-6 text-xs w-full lg:flex-1">
               <div className="flex items-start gap-4">
                 <Phone className="size-4 text-[#d69a2d]" />
                 <p>
@@ -163,7 +164,7 @@ export default function ContactSection() {
               <div className="flex items-start gap-4">
                 <Mail className="size-4 text-[#d69a2d]" />
                 <p>
-                  info@jacobsgroupofcompanies.com
+                  info@yaspin.com
                 </p>
               </div>
 
@@ -183,7 +184,8 @@ export default function ContactSection() {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-[#18497a] p-7 shadow-2xl z-30 mt-[-130px]">
+          {/* Contact Form */}
+          <div className="hidden lg:block bg-[#18497a] p-7 shadow-2xl z-30 mt-[-130px]">
             <h3 className="mb-5 text-3xl font-light text-white">
               Contact Us
             </h3>
@@ -244,7 +246,7 @@ export default function ContactSection() {
 
       </Container>
 
-      <Container className="py-10">
+      <Container className="py-6 lg:py-10">
         <div className="flex items-center justify-center">
           <p className="text-xs text-center">
             © 2026 YASPN. All rights reserved.
