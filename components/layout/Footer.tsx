@@ -108,7 +108,7 @@ export default function ContactSection() {
 
             {/* Logo */}
             <div className="w-full lg:flex-1">
-              <div className="relative h-20 w-[130px]">
+              <div className="relative h-20 w-[180px]">
                 <Image
                   src="/YASPN-WHITE.svg"
                   alt="YASPN Logo"
@@ -118,12 +118,29 @@ export default function ContactSection() {
                 />
               </div>
 
+              {/* Jacobs Logo */}
+              {/* Jacobs Branding */}
+              <div className="my-4 flex items-center gap-3">
+                <span className="text-3xl font-light text-white/90">
+                  By
+                </span>
+
+                <div className="relative h-20 w-[160px]">
+                  <Image
+                    src="/Jacobswhite.svg"
+                    alt="Jacobs Logo"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+
               {/* Heading */}
-              <h3 className="mb-5 text-[#d69a2d]">
+              <h3 className="mb-2 text-[#d69a2d]">
                 Let&apos;s Build the Future Together
               </h3>
 
-              <p className="max-w-[300px] text-sm">
+              <p className="max-w-[340px] text-base leading-7 text-zinc-300">
                 We are always ready to discuss your project
                 and explore how we can build the future
                 together.
@@ -133,7 +150,7 @@ export default function ContactSection() {
             {/* Footer Links */}
             <div className="w-full lg:flex-1 flex items-start lg:items-center lg:justify-center">
               {/* Navigation */}
-              <div className="space-y-4 text-xs">
+              <div className="space-y-5 text-base text-zinc-200">
                 <p className="cursor-pointer hover:text-[#d69a2d]">
                   Home
                 </p>
@@ -153,9 +170,9 @@ export default function ContactSection() {
             </div>
 
             {/* Contact Info */}
-            <div className="space-y-6 text-xs w-full lg:flex-1">
+            <div className="space-y-7 text-base text-zinc-200 w-full lg:flex-1">
               <div className="flex items-start gap-4">
-                <Phone className="size-4 text-[#d69a2d]" />
+                <Phone className="mt-1 size-5 text-[#d69a2d]" />
                 <p>
                   +96 65490 22228
                 </p>
@@ -169,7 +186,7 @@ export default function ContactSection() {
               </div>
 
               <div className="flex items-start gap-4">
-                <MapPin className="size-4 shrink-0 text-[#d69a2d]" />
+                <MapPin className="mt-1 size-5 shrink-0 text-[#d69a2d]" />
 
                 <p>
                   YASPN Global Company
@@ -248,7 +265,7 @@ export default function ContactSection() {
 
       <Container className="py-6 lg:py-10">
         <div className="flex items-center justify-center">
-          <p className="text-xs text-center">
+          <p className="text-sm text-center text-zinc-400">
             © 2026 YASPN. All rights reserved.
           </p>
         </div>
