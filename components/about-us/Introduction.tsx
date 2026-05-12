@@ -4,7 +4,7 @@ const Introduction = () => {
   return (
     <section className="relative w-full overflow-hidden bg-black py-20 text-white">
   
-      <Container className="">
+      <Container>
         {/* Background Big Text */}
         <h1 className="absolute top-20 left-1/2 -translate-x-1/2 text-[50px] md:text-[130px] font-bold 
         text-white/10 whitespace-nowrap select-none">
