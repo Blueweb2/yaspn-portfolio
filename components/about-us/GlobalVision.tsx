@@ -8,11 +8,7 @@ const content = [
 
   `With a mission to create meaningful social and economic impact worldwide, YASPN develops high-quality environments that inspire growth, opportunity, and community well-being. From world-class sports facilities and educational institutions to healthcare centers, hospitality destinations, and urban developments, every initiative is designed to create lasting value for people and communities around the globe.`,
 
-  `With a mission to create meaningful social and economic impact
-  worldwide, YASPN develops high-quality environments that inspire
-  growth, opportunity, and community well-being.`,
-
-  `To further support its global initiatives, YASPN collaborates with ATG – Americas Technology Group Inc. (USA) and international development associates to deliver transformative projects that create opportunities for future generations and contribute to sustainable global progress.`,
+  `YASPN is backed by the YASPN Group, a globally established organization with over 45 years of international business experience across multiple sectors and regions. Supported by the group’s extensive expertise, global network, and strategic industry partnerships, YASPN is positioned to successfully deliver impactful projects on an international scale while maintaining a strong commitment to quality, sustainability, and innovation. To further support its global initiatives, YASPN has empowered Jacob's Trading and Contractors Pvt. Ltd. and the associates of ATG/YSPN – Americas Technology Group Inc. (USA) to act on its behalf. Together, they share a unified vision of building a better future through developments that create opportunities for young people and contribute to sustainable global progress.`,
 ];
 
 const ourMissionContent = [
