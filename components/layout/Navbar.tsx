@@ -43,8 +43,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className={`fixed top-0 z-50 w-full ${
-        scrolled ? "bg-black backdrop-blur-md" : "bg-transparent"
+    <header className={`fixed top-0 z-50 w-full ${scrolled ? "bg-black backdrop-blur-md" : "bg-transparent"
       }`}>
       <Container>
         <div className="flex h-24 items-center justify-between">
@@ -72,11 +71,10 @@ export default function Navbar() {
                   <Link
                     key={item.label}
                     href={item.href}
-                    className={`group relative text-[14px] font-medium transition ${
-                      isActive
-                        ? "text-[#d69a2d]"
-                        : "text-white hover:text-[#d69a2d]"
-                    }`}
+                    className={`group relative text-[14px] font-medium transition ${isActive
+                      ? "text-[#d69a2d]"
+                      : "text-white hover:text-[#d69a2d]"
+                      }`}
                   >
                     {item.label}
 
@@ -92,7 +90,7 @@ export default function Navbar() {
             {/* CTA Button */}
             <Button className="rounded-full bg-[#d69a2d] text-[13px] text-sm px-4 py-3  text-white hover:bg-[#184873]">
               Get In Touch
-              
+
               <motion.div
                 animate={{ x: [0, 6, 0] }}
                 transition={{
@@ -122,20 +120,20 @@ export default function Navbar() {
 
               <SheetContent
                 side="right"
-                className="border-white/10 bg-[#050816] text-white"
+                className="w-[85%] border-white/10 bg-[#050816] p-6 text-white sm:max-w-sm"
               >
-                <div className="mt-16 flex flex-col gap-8">
+                <div className="mt-14 flex h-full flex-col">
                   {navLinks.map((item) => (
                     <Link
                       key={item.label}
                       href={item.href}
-                      className="text-xl font-medium text-zinc-200 transition hover:text-[#d69a2d]"
+                      className="text-lg font-semibold text-zinc-200 transition hover:text-[#d69a2d]"
                     >
                       {item.label}
                     </Link>
                   ))}
 
-                  <Button className="mt-6 h-14 rounded-full bg-[#d69a2d] text-base font-semibold text-white hover:bg-[#c58d26]">
+                  <Button className="mt-10 h-14 w-full rounded-full bg-[#d69a2d] text-base font-semibold text-white hover:bg-[#c58d26]">
                     Get In Touch
 
                     <motion.div
@@ -155,7 +153,7 @@ export default function Navbar() {
               </SheetContent>
             </Sheet>
           </div>
-          
+
         </div>
       </Container>
     </header>
