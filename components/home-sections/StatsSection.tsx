@@ -54,7 +54,7 @@ export default function StatsSection() {
                 ease: [0.22, 1, 0.36, 1],
               }}
               viewport={{ once: true }}
-              className="group relative overflow-hidden border-l border-white/20 px-8"
+              className="group relative overflow-hidden border-l border-white/20 px-4 sm:px-6 lg:px-8"
             >
               {/* Glow Effect */}
               <div className="absolute inset-0 bg-gradient-to-b from-[#d69a2d]/0 via-[#d69a2d]/0 to-transparent transition-all duration-700 group-hover:via-[#d69a2d]/10" />
@@ -92,7 +92,7 @@ export default function StatsSection() {
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 viewport={{ once: true }}
-                className="text-6xl font-light text-white transition-all duration-500 group-hover:text-[#d69a2d]"
+                className="text-5xl sm:text-6xl font-light leading-none text-white transition-all duration-500 group-hover:text-[#d69a2d]"
               >
                 {item.value}
               </motion.h3>
@@ -113,7 +113,7 @@ export default function StatsSection() {
                   ease: "easeOut",
                 }}
                 viewport={{ once: true }}
-                className="mt-5 text-sm uppercase tracking-wide text-zinc-400 transition-colors duration-500 group-hover:text-zinc-200"
+                className="mt-4 text-xs sm:text-sm uppercase tracking-wide text-zinc-400 transition-colors duration-500 group-hover:text-zinc-200"
               >
                 {item.label}
               </motion.p>
