@@ -58,7 +58,7 @@ export default function ProjectsSection() {
           </div>
 
           <Link href="/projects">
-            <Button className="rounded-full bg-[#d69a2d] text-black hover:bg-[#c58d26]">
+            <Button className="rounded-full py-6 px-5 bg-[#d69a2d] hover:bg-[#184873]">
               View All Projects
             </Button>
           </Link>
@@ -122,7 +122,7 @@ export default function ProjectsSection() {
           alt="City Skyline"
           width={1920}
           height={220}
-          className="h-auto w-full object-cover opacity-90"
+          className="h-[200px] md:h-[300px] lg:h-auto w-full object-cover opacity-90"
         />
       </div>
     </section>

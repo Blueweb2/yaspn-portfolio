@@ -132,7 +132,7 @@ export default function StatsSection() {
           alt="City Skyline"
           width={1920}
           height={220}
-          className="h-auto w-full object-cover opacity-90"
+          className="h-[200px] md:h-[300px] lg:h-auto w-full object-cover opacity-90"
         />
       </div>
     </section>
