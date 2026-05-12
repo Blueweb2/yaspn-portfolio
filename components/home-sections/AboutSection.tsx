@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-24">
+    <section id="about" className="py-24 bg-[#02040c]">
       <Container>
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
 
