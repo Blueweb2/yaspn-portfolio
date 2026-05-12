@@ -22,7 +22,6 @@ export default function HeroSection() {
       </video>
 
       {/* Gradient Overlay */}
-      {/* <div className="absolute inset-0 bg-gradient-to-r from-[#252525]" /> */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#050816]/90 via-[#050816]/30 to-transparent" />
 
       <Container className="relative z-10 pt-28">

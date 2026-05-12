@@ -166,6 +166,10 @@ export default function ContactSection() {
                 <p className="cursor-pointer hover:text-[#d69a2d]">
                   Contact Us
                 </p>
+
+                <p className="cursor-pointer hover:text-[#d69a2d]">
+                  Projects
+                </p>
               </div>
             </div>
 

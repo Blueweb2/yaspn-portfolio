@@ -69,14 +69,42 @@ export default function FounderSection() {
             ))}
           </div>
 
-          <Button className="self-start mt-10 rounded-full border border-[#bd8620] bg-[#bd8620] px-6 py-5 text-xs text-white transition-all duration-300 hover:-translate-y-1 hover:bg-transparent hover:text-[#bd8620]">
-            View Profile
-          </Button>
+          <motion.div
+            initial={{ opacity: 0, filter: "blur(10px)" }}
+            animate={{ opacity: 1, filter: "blur(0px)" }}
+            transition={{
+              duration: 5,
+            }}
+          >
+            <Button className="self-start mt-10 rounded-full border border-[#bd8620] bg-[#bd8620] px-6 py-5 text-xs text-white transition-all duration-300 hover:-translate-y-1 hover:bg-transparent hover:text-[#bd8620]">
+              View Profile
+            </Button> 
+          </motion.div>
         </div>
 
-        <div className="relative md:ml-[-130px] lg:ml-[-190px] mx-auto h-[300px] md:h-[450px] 2xl:h-[600px] my-10 
-        w-[70%] md:w-[30%]">
-          <div className="my-5 h-[90%]" >
+        <motion.div
+          initial={{
+            opacity: 0,
+            scale: 0.8,
+            y: 80,
+          }}
+          whileInView={{
+            opacity: 1,
+            scale: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 3,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          viewport={{ once: true }}
+          className="relative mx-auto my-10 h-[300px] w-[70%] md:ml-[-130px] md:h-[450px] md:w-[30%] lg:ml-[-190px] 2xl:h-[600px]"
+        >
+          
+          {/* Glow Background */}
+          <div className="absolute inset-0 rounded-full bg-[#d69a2d]/10 blur-3xl" />
+
+          <div className="my-5 h-[90%]">
             <Image
               src="/jacob.png"
               alt="Founder"
@@ -84,7 +112,8 @@ export default function FounderSection() {
               className="object-contain"
             />
           </div>
-        </div>
+
+        </motion.div>
 
       </Container>
     </section>
