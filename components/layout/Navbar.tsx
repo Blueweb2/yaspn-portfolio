@@ -50,7 +50,7 @@ export default function Navbar() {
         <div className="flex h-24 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="relative z-20">
-            <div className="relative h-20 w-[220px]">
+            <div className="relative h-16 w-32 md:h-20 md:w-[220px]">
               <Image
                 src="/YASPN-WHITE.svg"
                 alt="YASPN Logo"
