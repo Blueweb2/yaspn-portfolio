@@ -1,7 +1,6 @@
 "use client"
 
 import Image from "next/image";
-import { Check } from "lucide-react";
 import { motion } from "framer-motion";
 import Container from "@/components/layout/Container";
 import { Button } from "@/components/ui/button";

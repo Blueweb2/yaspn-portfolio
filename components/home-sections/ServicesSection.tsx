@@ -1,26 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
 import Image from "next/image";
-
 import Container from "@/components/layout/Container";
-
 import { getServices } from "@/services/service.api";
-
 import { IService } from "@/types/service.types";
 import { optimizeCloudinary } from "@/lib/cloudinary";
 
 export default function ServicesSection() {
-  const [services, setServices] =
-    useState<IService[]>([]);
 
-  const [loading, setLoading] =
-    useState(true);
-
-  // =========================
-  // FETCH SERVICES
-  // =========================
+  const [services, setServices] = useState<IService[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchServices = async () => {
@@ -99,15 +89,9 @@ export default function ServicesSection() {
                   className="group relative overflow-hidden border-b-[3px] border-b-[#1B3A5B] bg-[#101d3d]/95 p-10 text-center transition-[background-color] duration-500 ease-out hover:bg-[#245487]"
                 >
                   {/* ANIMATED GOLD BOTTOM BORDER */}
-
                   <div className="absolute bottom-0 left-0 h-[3px] w-full origin-left scale-x-0 bg-[#F0A516] transition-transform duration-500 ease-out group-hover:scale-x-100" />
 
-
                   {/* ICON */}
-                  {/* </div> */}
-
-                  {/* ICON */}
-
                   <div className="mb-8 flex justify-center">
                     <Image
                       src={

@@ -1,9 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
 import { toast } from "sonner";
-
 import { sendContactMessage } from "@/services/contact.api";
 import {
   Mail,
@@ -27,8 +25,7 @@ export default function ContactSection() {
       message: "",
     });
 
-  const [loading, setLoading] =
-    useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -91,6 +88,7 @@ export default function ContactSection() {
       setLoading(false);
     }
   };
+  
   return (
     <section
       id="contact"
@@ -213,7 +211,6 @@ export default function ContactSection() {
 
           </div>
 
-          {/* Contact Form */}
           {/* Contact Form */}
           <div className="hidden lg:block bg-[#18497a] p-7 shadow-2xl z-30 mt-[-130px]">
             <h3 className="mb-5 text-3xl font-light text-white">

@@ -7,6 +7,7 @@ import { IProject } from "@/types/project.types";
 import ProjectCard from "./ProjectCard";
 
 export default function ProjectsGrid() {
+  
   const [projects, setProjects] = useState<IProject[]>([]);
   const [loading, setLoading] = useState(true);
 
