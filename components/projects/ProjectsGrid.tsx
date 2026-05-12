@@ -33,7 +33,7 @@ export default function ProjectsGrid() {
     <section className="pt-12 pb-52 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {projects.map((project) => (
+          {projects?.map((project) => (
             <ProjectCard key={project._id} project={project} />
           ))}
         </div>

@@ -94,7 +94,7 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative bg-[#050816]"
+      className="relative bg-[#050816] pt-8"
     >
       {/* Skyline Background */}
       <div className="absolute inset-x-0 top-0 h-44 bg-[url('/skyline.png')] bg-cover bg-center opacity-90" />

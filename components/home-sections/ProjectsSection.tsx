@@ -58,7 +58,7 @@ export default function ProjectsSection() {
           </div>
 
           <Link href="/projects">
-            <Button className="rounded-full bg-[#d69a2d] text-black hover:bg-[#c58d26]">
+            <Button className="rounded-full py-6 px-5 bg-[#d69a2d] hover:bg-[#184873]">
               View All Projects
             </Button>
           </Link>
