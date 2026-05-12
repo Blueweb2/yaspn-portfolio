@@ -29,11 +29,10 @@ const reasons = [
 
 const WhyChoose = () => {
   return (
-    <section className="relative overflow-hidden  pt-24 pb-42">
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-[url('/services/skyline-cut-grdnt.svg')] bg-cover bg-center opacity-10" />
+    <section className="relative   pt-24 pb-42">
 
       <Container>
-        <div className="relative z-10">
+        <div className="relative z-10 pb-10">
           <div className="text-center">
             <h2 className="text-4xl font-bold md:text-5xl">
               Why Choose YASPN?
@@ -113,6 +112,16 @@ const WhyChoose = () => {
 
         </div>
       </Container>
+
+      {/* Bottom SVG Skyline */}
+      <div className="absolute bottom-0 left-0 w-full leading-none">
+        <img
+          src="/services/skyline-cut-grdnt.svg"
+          alt="City Skyline"
+          className="block w-full object-cover"
+        />
+      </div>
+
     </section>
   )
 }
