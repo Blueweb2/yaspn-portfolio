@@ -90,7 +90,7 @@ export default function AboutSection() {
               whileInView={{ filter: "blur(0px)", opacity: 1 }}
               transition={{ duration: 1.5 }}
               viewport={{ once: true }}
-              className="pt-5 text-sm max-w-[700px]"
+              className="pt-5 text-sm max-w-[530px]"
             >
               YASPN (Youth Athletic Sports Programming Network) is a global project development company in the areas of sport infrastructure, education, health care, hospitality and sustainable urban development. Its vision is the development of high-quality ecosystems that empower youth, strengthen communities, and drive lasting social and economic impact worldwide. The organization is backed by YASPN Group, which has more than 45 years of international business experience in a variety of sectors and regions.
             </motion.p>
@@ -100,7 +100,7 @@ export default function AboutSection() {
               whileInView={{ filter: "blur(0px)", opacity: 1 }}
               transition={{ duration: 1.5, delay: 0.3 }}
               viewport={{ once: true }}
-              className="pt-3 text-sm max-w-[700px]"
+              className="pt-3 text-sm max-w-[530px]"
             >
               YASPN has also allowed Jacob’s Trading and Contractors Pvt. Ltd. and the associates of ATG/YSPN – Americas Technology Group Inc. (USA) to work on its behalf in supporting and delivering global initiatives. Together, they are dedicated to developing impactful projects that create opportunities for young people and contribute to sustainable global development.
             </motion.p>
