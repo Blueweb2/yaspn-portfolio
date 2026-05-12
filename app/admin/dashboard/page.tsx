@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 
 import {
@@ -8,59 +10,108 @@ import {
   Plus,
 } from "lucide-react";
 
-const stats = [
-  {
-    title: "Total Projects",
-    value: "12",
-    icon: FolderKanban,
-  },
-  {
-    title: "Services",
-    value: "6",
-    icon: BriefcaseBusiness,
-  },
-  {
-    title: "Messages",
-    value: "24",
-    icon: Mail,
-  },
-  {
-    title: "Users",
-    value: "1",
-    icon: Users,
-  },
-];
+import {
+  useEffect,
+  useState,
+} from "react";
 
-const latestProjects = [
-  {
-    title: "Sports Infrastructure",
-    category: "Infrastructure",
-    status: "Completed",
-  },
-  {
-    title: "Healthcare System",
-    category: "Healthcare",
-    status: "Ongoing",
-  },
-  {
-    title: "Education Campus",
-    category: "Education",
-    status: "Completed",
-  },
-];
+import {
+  getDashboardStats,
+  getLatestProjects,
+} from "@/services/dashboard.api";
 
-const quickActions = [
-  {
-    title: "Add Project",
-    href: "/admin/projects/create",
-  },
-  {
-    title: "Add Service",
-    href: "/admin/services/create",
-  },
-];
+const statIcons = {
+  projects: FolderKanban,
+  services: BriefcaseBusiness,
+  messages: Mail,
+  users: Users,
+};
 
 export default function AdminDashboardPage() {
+  const [stats, setStats] =
+    useState<any>(null);
+
+  const [projects, setProjects] =
+    useState<any[]>([]);
+
+  const [loading, setLoading] =
+    useState(true);
+
+  useEffect(() => {
+    const loadDashboard =
+      async () => {
+        try {
+          const statsData =
+            await getDashboardStats();
+
+          const projectsData =
+            await getLatestProjects();
+
+          setStats(statsData);
+
+          setProjects(projectsData);
+        } catch (error) {
+          console.error(error);
+        } finally {
+          setLoading(false);
+        }
+      };
+
+    void loadDashboard();
+  }, []);
+
+  const statCards = [
+    {
+      title: "Total Projects",
+      value:
+        stats?.projects || 0,
+      icon:
+        statIcons.projects,
+    },
+    {
+      title: "Services",
+      value:
+        stats?.services || 0,
+      icon:
+        statIcons.services,
+    },
+    {
+      title: "Messages",
+      value:
+        stats?.messages || 0,
+      icon:
+        statIcons.messages,
+    },
+    {
+      title: "Users",
+      value:
+        stats?.users || 0,
+      icon:
+        statIcons.users,
+    },
+  ];
+
+  const quickActions = [
+    {
+      title: "Add Project",
+      href:
+        "/admin/projects/create",
+    },
+    {
+      title: "Add Service",
+      href:
+        "/admin/services/create",
+    },
+  ];
+
+  if (loading) {
+    return (
+      <div className="flex h-[400px] items-center justify-center text-zinc-400">
+        Loading dashboard...
+      </div>
+    );
+  }
+
   return (
     <section className="space-y-10">
       {/* Heading */}
@@ -76,7 +127,7 @@ export default function AdminDashboardPage() {
 
       {/* Statistics */}
       <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-        {stats.map((item) => {
+        {statCards.map((item) => {
           const Icon = item.icon;
 
           return (
@@ -121,33 +172,39 @@ export default function AdminDashboardPage() {
           </div>
 
           <div className="space-y-4">
-            {latestProjects.map((project) => (
-              <div
-                key={project.title}
-                className="flex items-center justify-between rounded-2xl border border-white/5 bg-[#182544] p-5"
-              >
-                <div>
-                  <h3 className="text-lg font-semibold text-white">
-                    {project.title}
-                  </h3>
-
-                  <p className="mt-1 text-sm text-zinc-400">
-                    {project.category}
-                  </p>
-                </div>
-
+            {projects.map(
+              (project) => (
                 <div
-                  className={`rounded-full px-4 py-2 text-sm font-medium ${
-                    project.status ===
-                    "Completed"
-                      ? "bg-green-500/15 text-green-400"
-                      : "bg-yellow-500/15 text-yellow-400"
-                  }`}
+                  key={project._id}
+                  className="flex items-center justify-between rounded-2xl border border-white/5 bg-[#182544] p-5"
                 >
-                  {project.status}
+                  <div>
+                    <h3 className="text-lg font-semibold text-white">
+                      {project.title}
+                    </h3>
+
+                    <p className="mt-1 text-sm text-zinc-400">
+                      {
+                        project.category
+                      }
+                    </p>
+                  </div>
+
+                  <div
+                    className={`rounded-full px-4 py-2 text-sm font-medium ${
+                      project.status ===
+                      "Completed"
+                        ? "bg-green-500/15 text-green-400"
+                        : "bg-yellow-500/15 text-yellow-400"
+                    }`}
+                  >
+                    {
+                      project.status
+                    }
+                  </div>
                 </div>
-              </div>
-            ))}
+              )
+            )}
           </div>
         </div>
 
@@ -158,21 +215,27 @@ export default function AdminDashboardPage() {
           </h2>
 
           <div className="space-y-4">
-            {quickActions.map((action) => (
-              <Link
-                key={action.title}
-                href={action.href}
-                className="flex h-16 items-center justify-between rounded-2xl border border-white/5 bg-[#182544] px-5 transition hover:border-[#D69A2D]"
-              >
-                <span className="font-medium text-white">
-                  {action.title}
-                </span>
+            {quickActions.map(
+              (action) => (
+                <Link
+                  key={action.title}
+                  href={
+                    action.href
+                  }
+                  className="flex h-16 items-center justify-between rounded-2xl border border-white/5 bg-[#182544] px-5 transition hover:border-[#D69A2D]"
+                >
+                  <span className="font-medium text-white">
+                    {
+                      action.title
+                    }
+                  </span>
 
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#D69A2D] text-white">
-                  <Plus size={18} />
-                </div>
-              </Link>
-            ))}
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#D69A2D] text-white">
+                    <Plus size={18} />
+                  </div>
+                </Link>
+              )
+            )}
           </div>
         </div>
       </div>
