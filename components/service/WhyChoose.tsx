@@ -1,10 +1,13 @@
+"use client";
+
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Container from "../layout/Container";
 
 const reasons = [
     {
         icon: "/services/icons-contact/trophy.svg",
-        title: "40+ Years Industry Experience",
+        title: "45+ Years Industry Experience",
     },
     {
         icon: "/services/icons-contact/globe.svg",
@@ -30,44 +33,85 @@ const WhyChoose = () => {
       <div className="absolute bottom-0 left-0 right-0 h-40 bg-[url('/services/skyline-cut-grdnt.svg')] bg-cover bg-center opacity-10" />
 
       <Container>
-          <div className="relative z-10">
-              <div className="text-center">
-                  <h2 className="text-4xl font-bold md:text-5xl">
-                      Why Choose YASPN?
-                  </h2>
-              </div>
-
-              <div className="mt-20 grid gap-10 md:grid-cols-3 xl:grid-cols-5">
-                  {reasons.map((reason, index) => (
-                      <div
-                          key={reason.title}
-                          className="relative flex flex-col items-center px-6 text-center"
-                      >
-                          {/* LEFT SEPARATOR */}
-
-                          {index !== 0 && (
-                              <div className="absolute left-0 top-1/2 hidden h-52 w-px -translate-y-1/2 bg-white/10 xl:block" />
-                          )}
-
-                          {/* ICON */}
-
-                          <Image
-                              src={reason.icon}
-                              alt={reason.title}
-                              width={58}
-                              height={58}
-                              className="mb-8 object-contain"
-                          />
-
-                          {/* TITLE */}
-
-                          <p className="max-w-[220px] text-xl leading-9 text-zinc-300">
-                              {reason.title}
-                          </p>
-                      </div>
-                  ))}
-              </div>
+        <div className="relative z-10">
+          <div className="text-center">
+            <h2 className="text-4xl font-bold md:text-5xl">
+              Why Choose YASPN?
+            </h2>
           </div>
+
+          <div className="mt-20 grid gap-10 md:grid-cols-3 xl:grid-cols-5 ">
+            {reasons.map((reason, index) => (
+              
+              <motion.div
+                key={reason.title}
+                initial={{
+                  opacity: 0,
+                  y: 80,
+                  scale: 0.9,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                }}
+                transition={{
+                  duration: 1.1,
+                  delay: index * 0.12,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                viewport={{ once: true }}
+                whileHover={{
+                  y: -10,
+                }}
+                className="group flex flex-col items-center border-l border-white/10 px-6 text-center transition-all duration-500"
+              >
+                
+                {/* ICON */}
+                <motion.div
+                  animate={{
+                    y: [0, -6, 0],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: index * 0.2,
+                  }}
+                >
+                  <Image
+                    src={reason.icon}
+                    alt={reason.title}
+                    width={58}
+                    height={58}
+                    className="mb-8 object-contain transition duration-500 group-hover:scale-110"
+                  />
+                </motion.div>
+
+                {/* TITLE */}
+                <motion.p
+                  initial={{
+                    opacity: 0,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                  }}
+                  transition={{
+                    duration: 1,
+                    delay: 0.3 + index * 0.12,
+                  }}
+                  viewport={{ once: true }}
+                  className="max-w-[220px] text-xl leading-9 text-zinc-300 transition duration-300 group-hover:text-white"
+                >
+                  {reason.title}
+                </motion.p>
+
+              </motion.div>
+
+            ))}
+          </div>
+
+        </div>
       </Container>
     </section>
   )

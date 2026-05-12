@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Container from "../layout/Container";
 
@@ -92,66 +95,83 @@ const services = [
 const Services = () => {
   return (
     <section className="relative py-24">
-        <Container>
-            <div className="space-y-10">
-                {services.map((service, index) => (
-                  <div
-                    key={service.title}
-                    className="group grid overflow-hidden border-b-[3px] border-b-[#1B3A5B] bg-[#112347] transition-all duration-500 md:grid-cols-2"
-                  >
-                    {/* IMAGE */}
-                    <div
-                      className={`relative min-h-[320px] ${index % 2 !== 0
-                          ? "md:order-2"
-                          : ""
-                          }`}
-                    >
+      <Container>
+        <div className="space-y-10">
+          {services.map((service, index) => (
+            <div
+              key={service.title}
+              className="group grid overflow-hidden border-b-[3px] border-b-[#1B3A5B] bg-[#112347] transition-all duration-500 md:grid-cols-2"
+            >
+              {/* IMAGE */}
+              <div
+                className={`relative min-h-[320px] ${index % 2 !== 0
+                  ? "md:order-2"
+                  : ""
+                  }`}
+              >
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  fill
+                  className="object-cover transition duration-700 grayscale-0 lg:grayscale lg:group-hover:grayscale-0"
+                />
+              </div>
+
+              {/* CONTENT */}
+              <div className="flex flex-col justify-center bg-[#112347] p-8 transition-all duration-500 group-hover:bg-[#194874] md:p-12">
+                <h2 className="text-3xl font-bold text-[#F0A516]">
+                    {service.title}
+                </h2>
+
+                <p className="mt-5 leading-8 text-zinc-300">
+                    {service.description}
+                </p>
+
+                <div className="mt-8">
+                  <h3 className="mb-4 text-lg font-semibold text-white">
+                      Services Include :
+                  </h3>
+
+                  <ul className="space-y-3 overflow-hidden text-zinc-300">
+                    {service.points.map((point, index) => (
+                      <motion.li
+                        key={point}
+                        initial={{
+                          opacity: 0,
+                          x: 80,
+                        }}
+                        whileInView={{
+                          opacity: 1,
+                          x: 0,
+                        }}
+                        transition={{
+                          duration: 2.9,
+                          delay: index * 0.15,
+                          ease: [0.22, 1, 0.36, 1],
+                        }}
+                        viewport={{ once: true }}
+                        className="flex items-center gap-3"
+                      >
                         <Image
-                          src={service.image}
-                          alt={service.title}
-                          fill
-                          className="object-cover grayscale transition duration-700 group-hover:grayscale-0" 
+                          src="/sportsman-icon.svg"
+                          alt="Check"
+                          width={14}
+                          height={14}
+                          className="object-contain"
                         />
-                    </div>
+                        <span>{point}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
 
-                    {/* CONTENT */}
-                    <div className="flex flex-col justify-center bg-[#112347] p-8 transition-all duration-500 group-hover:bg-[#194874] md:p-12">
-                        <h2 className="text-3xl font-bold text-[#F0A516]">
-                            {service.title}
-                        </h2>
 
-                        <p className="mt-5 leading-8 text-zinc-300">
-                            {service.description}
-                        </p>
 
-                        <div className="mt-8">
-                            <h3 className="mb-4 text-lg font-semibold text-white">
-                                Services Include :
-                            </h3>
-
-                            <ul className="space-y-3 text-zinc-300">
-                                {service.points.map((point) => (
-                                    <li
-                                      key={point}
-                                      className="flex items-center gap-3"
-                                    >
-                                      <Image
-                                          src="/sportsman-icon.svg"
-                                          alt="Check"
-                                          width={14}
-                                          height={14}
-                                          className="object-contain"
-                                      />
-                                      <span>{point}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-                  </div>
-                ))}
+                </div>
+              </div>
             </div>
-        </Container>
+          ))}
+        </div>
+      </Container>
     </section>
   )
 }
