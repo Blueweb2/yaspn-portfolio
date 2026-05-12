@@ -63,7 +63,7 @@ const WhyChoose = () => {
                 whileHover={{
                   y: -10,
                 }}
-                className="group flex flex-col items-center border-l border-white/10 px-6 text-center transition-all duration-500"
+                className="group flex md:flex-col items-center justify-between md:justify-center border-l border-white/10 px-6 text-center transition-all duration-500"
               >
                 
                 {/* ICON */}
@@ -83,7 +83,7 @@ const WhyChoose = () => {
                     alt={reason.title}
                     width={58}
                     height={58}
-                    className="mb-8 object-contain transition duration-500 group-hover:scale-110"
+                    className="md:mb-8 object-contain transition duration-500 group-hover:scale-110"
                   />
                 </motion.div>
 
