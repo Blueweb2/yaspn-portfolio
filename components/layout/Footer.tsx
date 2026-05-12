@@ -100,11 +100,11 @@ export default function ContactSection() {
       <div className="absolute inset-x-0 top-0 h-44 bg-[url('/skyline.png')] bg-cover bg-center opacity-90" />
 
       <Container className="relative">
-        <div className="grid gap-10 lg:gap-16 lg:grid-cols-[1fr_420px] lg:items-end border-b border-gray-500 pb-10">
+        <div className="grid gap-10 lg:gap-16 lg:grid-cols-[1fr_420px] lg:items-end border-b border-gray-700 pb-10">
+
 
           {/* Left Content */}
-          {/* Left Content */}
-<div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
+          <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
 
             {/* Logo */}
             <div className="w-full lg:flex-1">
@@ -164,7 +164,7 @@ export default function ContactSection() {
               <div className="flex items-start gap-4">
                 <Mail className="size-4 text-[#d69a2d]" />
                 <p>
-                  info@jacobsgroupofcompanies.com
+                  info@yaspin.com
                 </p>
               </div>
 
