@@ -94,7 +94,8 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative bg-[#050816] pt-8"
+
+      className="relative bg-[#0F1014] pt-8"
     >
       {/* Skyline Background */}
       <div className="absolute inset-x-0 top-0 h-44 bg-[url('/skyline.png')] bg-cover bg-center opacity-90" />
@@ -120,11 +121,19 @@ export default function ContactSection() {
 
               {/* Jacobs Logo */}
               {/* Jacobs Branding */}
-              <div className="my-4 flex items-center gap-3">
-                <span className="text-3xl font-light text-white/90">
-                  By
-                </span>
+              <div className="my-5 flex items-center gap-4">
+                {/* Text */}
+                <div className="flex flex-col leading-none">
+                  <span className="text-xs uppercase tracking-[3px] text-white/60">
+                    Provided
+                  </span>
 
+                  <span className="mt-1 text-3xl font-light text-white/90">
+                    By
+                  </span>
+                </div>
+
+                {/* Logo */}
                 <div className="relative h-20 w-[160px]">
                   <Image
                     src="/Jacobswhite.svg"
