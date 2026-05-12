@@ -1,8 +1,6 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Container from "@/components/layout/Container";
+import AnimatedLine from "../ui/animatedLine";
 
 export default function ProjectsHero() {
   return (
@@ -30,22 +28,7 @@ export default function ProjectsHero() {
             </span>
           </h1>
 
-          {/* Animated Line */}
-          <motion.div
-            initial={{
-              width: 96,
-              opacity: 1,
-            }}
-            animate={{
-              width: [96, 70, 96],
-            }}
-            transition={{
-              duration: 2.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="mt-6 h-[3px] bg-[#F0A516]"
-          />
+          <AnimatedLine />
 
         </div>
       </Container>
