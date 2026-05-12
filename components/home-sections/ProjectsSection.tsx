@@ -43,7 +43,7 @@ export default function ProjectsSection() {
   }, []);
 
   return (
-    <section className="bg-[#08142d] py-24">
+    <section className="bg-[#08142d] pt-24 pb-46">
       <Container>
         {/* Header */}
         <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-center">
@@ -77,7 +77,7 @@ export default function ProjectsSection() {
                 href="#"
                 className="group block overflow-hidden"
               >
-                <div className="relative h-[580px] overflow-hidden">
+                <div className="relative h-[520px] overflow-hidden">
                   {/* Image */}
                   <Image
                     src={
@@ -93,7 +93,7 @@ export default function ProjectsSection() {
                   />
 
                   {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/10" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/20 to-black/30" />
 
                   {/* TOP LEFT TITLE */}
                   <div className="absolute left-10 top-10 z-10">
@@ -104,7 +104,7 @@ export default function ProjectsSection() {
 
                   {/* BOTTOM RIGHT LOCATION */}
                   <div className="absolute bottom-8 right-8 z-10">
-                    <div className="bg-black/40 px-6 py-4 text-sm font-medium text-white backdrop-blur-sm">
+                    <div className="rounded-xl bg-black/40 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm">
                       {project.location ||
                         "Location not specified"}
                     </div>
