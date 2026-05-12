@@ -29,7 +29,7 @@ const stats = [
 
 export default function Experience() {
   return (
-    <section className="relative overflow-hidden bg-[#152036] pb-52 pt-24">
+    <section className="relative overflow-hidden bg-[#152036] pb-3 lg:pb-36 pt-8 md:pt-16 lg:pt-24">
       <Container>
 
         <h2 className="text-4xl font-bold md:text-5xl mb-10">

@@ -17,7 +17,7 @@ const AboutHeroSection = () => {
             repeat: Infinity,
             ease: "linear",
           }}
-          className="bg-[linear-gradient(90deg,#ffffff,#f8e7b9,#d69a2d,#fff4d6,#ffffff)] bg-[length:300%_100%] bg-clip-text text-7xl font-bold text-transparent"
+          className="bg-[linear-gradient(90deg,#ffffff,#f8e7b9,#d69a2d,#fff4d6,#ffffff)] bg-[length:300%_100%] bg-clip-text text-5xl md:text-7xl font-bold text-transparent"
         >
           ABOUT US
         </motion.h1>

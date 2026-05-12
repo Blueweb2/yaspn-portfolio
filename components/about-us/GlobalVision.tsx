@@ -101,11 +101,11 @@ const GlobalVision = () => {
         </div>
 
         {/* ───────────────── DIVIDER ───────────────── */}
-        <div className="border-t border-white/10 my-20"></div>
+        <div className="border-t border-white/10 my-10 md:my-20"></div>
 
         {/* ───────────────── VISION SECTION ───────────────── */}
         <div className="overflow-hidden">
-          <div className="grid grid-cols-1 items-start gap-16 lg:grid-cols-2">
+          <div className="grid grid-cols-1 items-start gap-5 md:gap-16 lg:grid-cols-2">
             
             {/* LEFT */}
             <motion.div
@@ -148,11 +148,11 @@ const GlobalVision = () => {
         </div>
 
         {/* ───────────────── DIVIDER ───────────────── */}
-        <div className="border-t border-white/10 my-20"></div>
+        <div className="border-t border-white/10 my-10 md:my-20"></div>
 
         {/* ───────────────── MISSION SECTION ───────────────── */}
         <div className="overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 md:gap-16 items-start">
 
             {/* LEFT */}
             <motion.div
