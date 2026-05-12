@@ -44,7 +44,7 @@ const HeroSection = () => {
       <Container>
         <div className="relative z-10 flex min-h-[720px] items-center overflow-hidden">
           
-          <div className="max-w-3xl">
+          <div>
 
             {/* Small Top Text */}
             <motion.p
@@ -64,7 +64,7 @@ const HeroSection = () => {
               }}
               className="mb-4 text-sm uppercase tracking-[5px] text-[#F0A516]"
             >
-              Building Tomorrow
+              OUR SERVICES
             </motion.p>
 
             {/* Main Heading */}
@@ -84,7 +84,7 @@ const HeroSection = () => {
                 }}
                 className="max-w-4xl text-5xl font-black leading-tight md:text-7xl"
               >
-                OUR{" "}
+                BUILDING{" "}
                 
                 <motion.span
                   animate={{
@@ -97,7 +97,7 @@ const HeroSection = () => {
                   }}
                   className="text-[#F0A516]"
                 >
-                  SERVICES
+                  TOMORROW
                 </motion.span>
 
               </motion.h1>
