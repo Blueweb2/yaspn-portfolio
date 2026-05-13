@@ -1,19 +1,11 @@
 "use client";
 
 import Image from "next/image";
-
-import {
-    Sheet,
-    SheetContent,
-    SheetTrigger,
-    SheetClose,
-} from "@/components/ui/sheet";
-
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { IProject } from "@/types/project.types";
 
 interface Props {
     project: IProject;
-
     children: React.ReactNode;
 }
 
@@ -141,33 +133,6 @@ export default function ProjectDrawer({
                                 </div>
                             </div>
                         )}
-
-                    {/* Technologies */}
-                    {/* {project.technologies &&
-                        project.technologies.length >
-                        0 && (
-                            <div className="border-t border-zinc-300 pt-8">
-                                <h3 className="mb-6 text-sm uppercase tracking-[5px] text-zinc-500">
-                                    Technologies
-                                </h3>
-
-                                <div className="flex flex-wrap gap-4">
-                                    {project.technologies.map(
-                                        (
-                                            tech,
-                                            index
-                                        ) => (
-                                            <div
-                                                key={index}
-                                                className="border border-zinc-300 px-5 py-3 text-sm text-black"
-                                            >
-                                                {tech}
-                                            </div>
-                                        )
-                                    )}
-                                </div>
-                            </div>
-                        )} */}
                 </div>
             </SheetContent>
         </Sheet>

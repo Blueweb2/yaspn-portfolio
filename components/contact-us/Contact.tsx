@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Container from "../layout/Container";
+import AnimatedLine from "../ui/animatedLine";
 
 const Contact = () => {
   return (
@@ -29,23 +30,12 @@ const Contact = () => {
                 ease: [0.22, 1, 0.36, 1],
               }}
               viewport={{ once: true }}
-              className="text-5xl font-extrabold uppercase leading-tight md:text-6xl"
+              className="text-5xl font-bold leading-tight md:text-7xl"
             >
-              Contact Us
+              CONTACT US
             </motion.h2>
 
-            {/* Yellow Line */}
-            <motion.div
-              initial={{ width: 0, opacity: 0 }}
-              whileInView={{ width: 80, opacity: 1 }}
-              transition={{
-                duration: 1,
-                delay: 0.3,
-                ease: "easeOut",
-              }}
-              viewport={{ once: true }}
-              className="mt-6 mb-8 h-[2px] bg-[#D89A1D]"
-            />
+            <AnimatedLine />
 
             {/* Description */}
             <motion.p
@@ -63,7 +53,7 @@ const Contact = () => {
                 ease: [0.22, 1, 0.36, 1],
               }}
               viewport={{ once: true }}
-              className="text-[17px] leading-8 text-gray-300"
+              className="text-[17px] mt-3 leading-8 text-gray-300"
             >
               If you have any questions about YASPN, our team is always here to
               help. Whether you're exploring partnership opportunities, planning a
@@ -93,7 +83,7 @@ const Contact = () => {
                       />
                     </svg>
                   ),
-                  text: "+971 50 123 4567",
+                  text: "00 966 54 490 2850",
                 },
 
                 {
@@ -301,7 +291,7 @@ const Contact = () => {
           <img
             src="/skyline-cut-Black.svg"
             alt="City Skyline"
-            className="block w-full object-cover"
+            className="block h-[200px] md:h-[300px] lg:h-auto w-full object-cover"
           />
         </div>
     </section>

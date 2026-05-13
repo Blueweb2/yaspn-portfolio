@@ -6,7 +6,7 @@ const Introduction = () => {
   
       <Container>
         {/* Background Big Text */}
-        <h1 className="absolute top-20 left-1/2 -translate-x-1/2 text-[50px] md:text-[130px] font-bold 
+        <h1 className="absolute top-20 left-1/2 -translate-x-1/2 text-[36px] md:text-[90px] lg:text-[130px] font-bold 
         text-white/10 whitespace-nowrap select-none">
           Chairman Message
         </h1>
@@ -72,7 +72,7 @@ const Introduction = () => {
           <img
             src="/stats-skyline.svg"
             alt="City Skyline"
-            className="w-full object-cover"
+            className="h-[200px] md:h-[300px] lg:h-auto w-full object-cover"
           />
         </div>
       </Container>

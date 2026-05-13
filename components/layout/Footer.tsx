@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
-
+import Link from "next/link";
 import { toast } from "sonner";
-
 import { sendContactMessage } from "@/services/contact.api";
 import {
   Mail,
@@ -17,6 +16,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
+const footerLinks = [
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Projects", href: "/projects" },
+  { label: "Contact Us", href: "/contact" },
+];
+
 export default function ContactSection() {
 
   const [formData, setFormData] =
@@ -27,8 +34,7 @@ export default function ContactSection() {
       message: "",
     });
 
-  const [loading, setLoading] =
-    useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -91,10 +97,10 @@ export default function ContactSection() {
       setLoading(false);
     }
   };
+  
   return (
     <section
       id="contact"
-
       className="relative bg-[#0F1014] pt-8"
     >
       {/* Skyline Background */}
@@ -160,25 +166,14 @@ export default function ContactSection() {
             <div className="w-full lg:flex-1 flex items-start lg:items-center lg:justify-center">
               {/* Navigation */}
               <div className="space-y-5 text-base text-zinc-200">
-                <p className="cursor-pointer hover:text-[#d69a2d]">
-                  Home
-                </p>
-
-                <p className="cursor-pointer hover:text-[#d69a2d]">
-                  About Us
-                </p>
-
-                <p className="cursor-pointer hover:text-[#d69a2d]">
-                  Services
-                </p>
-
-                <p className="cursor-pointer hover:text-[#d69a2d]">
-                  Contact Us
-                </p>
-
-                <p className="cursor-pointer hover:text-[#d69a2d]">
-                  Projects
-                </p>
+                {footerLinks.map(({href, label}) => (
+                  <Link
+                    href={href}
+                    className="block cursor-pointer hover:text-[#d69a2d]"
+                  >
+                    {label}
+                  </Link>
+                ))}
               </div>
             </div>
 
@@ -187,7 +182,7 @@ export default function ContactSection() {
               <div className="flex items-start gap-4">
                 <Phone className="mt-1 size-5 text-[#d69a2d]" />
                 <p>
-                  +96 65490 22228
+                  00 966 54 490 2850
                 </p>
               </div>
 
@@ -212,7 +207,7 @@ export default function ContactSection() {
                 <p>
                   YASPN Global Company
                   <br />
-                  Building No:3277 Koob Ibn Malik, Al Amamrah Dist.,Dammam, Kingdom of Saudi Arabia
+                  Building No:3277 Koob Ibn Malik, Al Amamrah Dist.,Dammam, Kingdom of <br /> Saudi Arabia
                   <br />
                   Postal Code:32415
                 </p>
@@ -221,7 +216,6 @@ export default function ContactSection() {
 
           </div>
 
-          {/* Contact Form */}
           {/* Contact Form */}
           <div className="hidden lg:block bg-[#18497a] p-7 shadow-2xl z-30 mt-[-130px]">
             <h3 className="mb-5 text-3xl font-light text-white">

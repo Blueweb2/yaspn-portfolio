@@ -32,7 +32,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="tracking-wider"
+            className="md:tracking-wider"
           >
             <span className="text-[#d69a2d]">Y</span>outh{" "}
             <span className="text-[#d69a2d]">A</span>thletic{" "}

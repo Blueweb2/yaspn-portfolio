@@ -1,30 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
 import Image from "next/image";
-
 import Link from "next/link";
-
 import Container from "@/components/layout/Container";
-
 import { Button } from "@/components/ui/button";
-
 import { getProjects } from "@/services/project.api";
-
 import { IProject } from "@/types/project.types";
 import { optimizeCloudinary } from "@/lib/cloudinary";
 
 export default function ProjectsSection() {
-  const [projects, setProjects] =
-    useState<IProject[]>([]);
 
-  const [loading, setLoading] =
-    useState(true);
-
-  // =========================
-  // FETCH PROJECTS
-  // =========================
+  const [projects, setProjects] = useState<IProject[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProjects = async () => {

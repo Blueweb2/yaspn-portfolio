@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Container from "../layout/Container";
+import AnimatedLine from "../ui/animatedLine";
 
 const HeroSection = () => {
   return (
@@ -82,7 +83,7 @@ const HeroSection = () => {
                   duration: 3.2,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="max-w-4xl text-5xl font-black leading-tight md:text-7xl"
+                className="max-w-4xl text-5xl font-bold leading-tight md:text-7xl"
               >
                 BUILDING{" "}
                 
@@ -102,23 +103,8 @@ const HeroSection = () => {
 
               </motion.h1>
             </div>
-
-            {/* Animated Line */}
-            <motion.div
-              initial={{
-                width: 96,
-                opacity: 1,
-              }}
-              animate={{
-                width: [96, 70, 96],
-              }}
-              transition={{
-                duration: 2.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="mt-6 h-[3px] bg-[#F0A516]"
-            />
+            
+            <AnimatedLine />
 
             {/* Sub Heading */}
             <motion.h2

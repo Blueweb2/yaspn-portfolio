@@ -15,7 +15,7 @@ export default function ProjectsPage() {
         <img
           src="/skyline-cut-Black.svg"
           alt="Skyline"
-          className="h-auto w-full object-cover opacity-90"
+          className="h-[200px] md:h-[300px] lg:h-auto w-full object-cover opacity-90"
         />
       </div>
     </main>

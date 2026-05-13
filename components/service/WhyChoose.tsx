@@ -29,7 +29,7 @@ const reasons = [
 
 const WhyChoose = () => {
   return (
-    <section className="relative   pt-24 pb-42">
+    <section className="relative pb-36 md:pt-10 md:pb-42">
 
       <Container>
         <div className="relative z-10 pb-10">
@@ -39,7 +39,7 @@ const WhyChoose = () => {
             </h2>
           </div>
 
-          <div className="mt-20 grid gap-10 md:grid-cols-3 xl:grid-cols-5 ">
+          <div className="mt-10 md:mt-20 grid gap-10 md:grid-cols-3 xl:grid-cols-5">
             {reasons.map((reason, index) => (
               
               <motion.div
@@ -63,7 +63,7 @@ const WhyChoose = () => {
                 whileHover={{
                   y: -10,
                 }}
-                className="group flex flex-col items-center border-l border-white/10 px-6 text-center transition-all duration-500"
+                className="group flex md:flex-col items-center justify-between md:justify-center border-l border-white/10 px-6 text-center transition-all duration-500"
               >
                 
                 {/* ICON */}
@@ -83,7 +83,7 @@ const WhyChoose = () => {
                     alt={reason.title}
                     width={58}
                     height={58}
-                    className="mb-8 object-contain transition duration-500 group-hover:scale-110"
+                    className="md:mb-8 object-contain transition duration-500 group-hover:scale-110"
                   />
                 </motion.div>
 
@@ -118,7 +118,7 @@ const WhyChoose = () => {
         <img
           src="/services/skyline-cut-grdnt.svg"
           alt="City Skyline"
-          className="block w-full object-cover"
+          className="block h-[200px] md:h-[300px] lg:h-auto w-full object-cover"
         />
       </div>
 

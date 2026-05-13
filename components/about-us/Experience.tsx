@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Container from "@/components/layout/Container";
 
 const stats = [
@@ -29,7 +28,7 @@ const stats = [
 
 export default function Experience() {
   return (
-    <section className="relative overflow-hidden bg-[#152036] pb-52 pt-24">
+    <section className="relative overflow-hidden bg-[#152036] pb-3 lg:pb-36 pt-8 md:pt-16 lg:pt-24">
       <Container>
 
         <h2 className="text-4xl font-bold md:text-5xl mb-10">
@@ -99,7 +98,7 @@ export default function Experience() {
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 viewport={{ once: true }}
-                className="text-6xl font-light text-white transition-all duration-500 group-hover:text-[#d69a2d]"
+                className="text-4xl md:text-5xl lg:text-6xl font-light text-white transition-all duration-500 group-hover:text-[#d69a2d]"
               >
                 {item.value}
               </motion.h3>

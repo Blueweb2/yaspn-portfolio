@@ -1,7 +1,6 @@
 "use client"
 
 import Image from "next/image";
-import { Check } from "lucide-react";
 import { motion } from "framer-motion";
 import Container from "@/components/layout/Container";
 import { Button } from "@/components/ui/button";
@@ -19,7 +18,7 @@ export default function FounderSection() {
     <section className="py-10 lg:py-24">
       <Container className="flex flex-col-reverse md:flex-row">
 
-        <div className="md:w-[80%] bg-[#0d1b3d] pl-5 py-5 md:pl-10 2xl:pl-32 flex flex-col justify-center">
+        <div className="md:w-[80%] bg-[#0d1b3d] pt-36 md:pt-5 pl-5 py-5 md:pl-10 2xl:pl-32 flex flex-col justify-center">
           <p className="mb-3 text-sm uppercase tracking-[3px] text-[#d69a2d]">
             Chairman & Founder
           </p>
@@ -53,8 +52,8 @@ export default function FounderSection() {
                 initial={{ opacity: 0, x: 100 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{
-                  duration: 1.5,
-                  delay: index * 0.8,
+                  duration: 1,
+                  delay: index * 0.5,
                 }}
                 viewport={{ once: true }}
                 className="flex items-start gap-3"
@@ -70,15 +69,22 @@ export default function FounderSection() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, filter: "blur(10px)" }}
-            animate={{ opacity: 1, filter: "blur(0px)" }}
-            transition={{
-              duration: 5,
+            initial={{
+              opacity: 0,
+              filter: "blur(10px)",
             }}
+            whileInView={{
+              opacity: 1,
+              filter: "blur(0px)",
+            }}
+            transition={{
+              duration: 1.2,
+            }}
+            viewport={{ once: true }}
           >
-            <Button className="self-start mt-10 rounded-full border border-[#bd8620] bg-[#bd8620] px-6 py-5 text-xs text-white transition-all duration-300 hover:-translate-y-1 hover:bg-transparent hover:text-[#bd8620]">
+            <Button className="mt-10 self-start rounded-full border border-[#bd8620] bg-[#bd8620] px-6 py-5 text-xs text-white transition-all duration-300 hover:-translate-y-1 hover:bg-transparent hover:text-[#bd8620]">
               View Profile
-            </Button> 
+            </Button>
           </motion.div>
         </div>
 
@@ -98,7 +104,7 @@ export default function FounderSection() {
             ease: [0.22, 1, 0.36, 1],
           }}
           viewport={{ once: true }}
-          className="relative mx-auto my-10 h-[300px] w-[70%] md:ml-[-130px] md:h-[450px] md:w-[30%] lg:ml-[-190px] 2xl:h-[600px]"
+          className="relative mx-auto my-10 h-[300px] w-[70%] md:ml-[-130px] md:h-[450px] md:w-[30%] lg:ml-[-190px] 2xl:h-[600px] mb-[-95px]"
         >
           
           {/* Glow Background */}
