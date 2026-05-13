@@ -119,6 +119,26 @@ const Contact = () => {
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
+                        d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15A2.25 2.25 0 012.25 17.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15A2.25 2.25 0 002.25 6.75m19.5 0v.243a2.25 2.25 0 01-.876 1.782l-7.5 5.625a2.25 2.25 0 01-2.748 0l-7.5-5.625A2.25 2.25 0 012.25 6.993V6.75"
+                      />
+                    </svg>
+                  ),
+                  text: "sales@yaspin.com",
+                },
+
+                {
+                  icon: (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.8}
+                      stroke="currentColor"
+                      className="size-6 text-[#D89A1D]"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                         d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
                       />
                       <path
@@ -131,12 +151,12 @@ const Contact = () => {
                   text: (
                     <>
                      <p>
-                  YASPN Global Company
-                  <br />
-                  Building No:3277 Koob Ibn Malik, Al Amamrah Dist.,Dammam, Kingdom of Saudi Arabia
-                  <br />
-                  Postal Code:32415
-                </p>
+                        YASPN Global Company
+                        <br />
+                        Building No:3277 Koob Ibn Malik, Al Amamrah Dist.,Dammam, Kingdom of Saudi Arabia
+                        <br />
+                        Postal Code:32415
+                      </p>
                     </>
                   ),
                 },
