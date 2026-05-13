@@ -6,8 +6,6 @@ import { useRouter } from "next/navigation";
 
 import { toast } from "sonner";
 
-import { Plus, Trash2 } from "lucide-react";
-
 import { createProject } from "@/services/project.api";
 import { getServices } from "@/services/service.api";
 import Image from "next/image";
@@ -26,22 +24,16 @@ export default function CreateProjectPage() {
   const [services, setServices] =
     useState<IService[]>([]);
 
-  const [features, setFeatures] =
+  const [features] =
     useState([""]);
 
-  const [technologies, setTechnologies] =
+  const [technologies] =
     useState([""]);
   const [thumbnailFile, setThumbnailFile] =
     useState<File | null>(null);
 
   const [thumbnailPreview, setThumbnailPreview] =
     useState("");
-
-  const [galleryFiles, setGalleryFiles] =
-    useState<File[]>([]);
-
-  const [galleryPreview, setGalleryPreview] =
-    useState<string[]>([]);
 
   const [formData, setFormData] =
     useState({
@@ -100,64 +92,6 @@ export default function CreateProjectPage() {
       [e.target.name]:
         e.target.value,
     });
-  };
-
-  const handleFeatureChange = (
-    index: number,
-    value: string
-  ) => {
-    const updated = [...features];
-
-    updated[index] = value;
-
-    setFeatures(updated);
-  };
-
-  const handleTechnologyChange = (
-    index: number,
-    value: string
-  ) => {
-    const updated = [
-      ...technologies,
-    ];
-
-    updated[index] = value;
-
-    setTechnologies(updated);
-  };
-
-  const addFeature = () => {
-    setFeatures([
-      ...features,
-      "",
-    ]);
-  };
-
-  const removeFeature = (
-    index: number
-  ) => {
-    setFeatures(
-      features.filter(
-        (_, i) => i !== index
-      )
-    );
-  };
-
-  const addTechnology = () => {
-    setTechnologies([
-      ...technologies,
-      "",
-    ]);
-  };
-
-  const removeTechnology = (
-    index: number
-  ) => {
-    setTechnologies(
-      technologies.filter(
-        (_, i) => i !== index
-      )
-    );
   };
 
   const handleSubmit = async (
@@ -263,17 +197,6 @@ export default function CreateProjectPage() {
           thumbnailFile
         );
       }
-
-      // =========================
-      // GALLERY
-      // =========================
-
-      galleryFiles.forEach((file) => {
-        formDataToSend.append(
-          "gallery",
-          file
-        );
-      });
 
       // =========================
       // API CALL

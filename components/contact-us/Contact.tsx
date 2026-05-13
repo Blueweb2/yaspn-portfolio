@@ -140,9 +140,13 @@ const Contact = () => {
                   ),
                   text: (
                     <>
-                      PO Box 123456, Dubai,
-                      <br />
-                      United Arab Emirates
+                     <p>
+                  YASPN Global Company
+                  <br />
+                  Building No:3277 Koob Ibn Malik, Al Amamrah Dist.,Dammam, Kingdom of Saudi Arabia
+                  <br />
+                  Postal Code:32415
+                </p>
                     </>
                   ),
                 },
