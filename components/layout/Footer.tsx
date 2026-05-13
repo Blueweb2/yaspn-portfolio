@@ -101,7 +101,6 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-
       className="relative bg-[#0F1014] pt-8"
     >
       {/* Skyline Background */}

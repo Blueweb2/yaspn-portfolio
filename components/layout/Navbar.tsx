@@ -64,7 +64,7 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden items-center gap-14 lg:flex">
             <nav className="flex items-center gap-12">
-              {navLinks.map((item, index) => {
+              {navLinks.map((item) => {
 
                 const isActive = pathname === item.href;
 
@@ -89,7 +89,13 @@ export default function Navbar() {
             </nav>
 
             {/* CTA Button */}
-            <Button className="rounded-full bg-[#d69a2d] text-[13px] text-sm px-4 py-3  text-white hover:bg-[#184873]">
+            <Button 
+              onClick={() => {
+                document
+                  .getElementById("contact")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="rounded-full bg-[#d69a2d] text-[13px] text-sm px-4 py-3  text-white hover:bg-[#184873]">
               Get In Touch
 
               <motion.div
@@ -135,7 +141,14 @@ export default function Navbar() {
                     </SheetClose>
                   ))}
 
-                  <Button className="mt-10 h-14 w-full rounded-full bg-[#d69a2d] text-base font-semibold text-white hover:bg-[#c58d26]">
+                  <Button 
+                    onClick={() => {
+                      document
+                        .getElementById("contact")
+                        ?.scrollIntoView({ behavior: "smooth" });
+                    }}
+                    className="mt-10 h-14 w-full rounded-full bg-[#d69a2d] text-base font-semibold text-white hover:bg-[#c58d26]"
+                  >
                     Get In Touch
 
                     <motion.div
