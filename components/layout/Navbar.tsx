@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { MoveRight, Menu } from "lucide-react";
@@ -28,6 +29,7 @@ export default function Navbar() {
 
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -142,11 +144,7 @@ export default function Navbar() {
                   ))}
 
                   <Button 
-                    onClick={() => {
-                      document
-                        .getElementById("contact")
-                        ?.scrollIntoView({ behavior: "smooth" });
-                    }}
+                    onClick={() => router.push("/contact")}
                     className="mt-10 h-14 w-full rounded-full bg-[#d69a2d] text-base font-semibold text-white hover:bg-[#c58d26]"
                   >
                     Get In Touch

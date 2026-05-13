@@ -18,7 +18,7 @@ export default function FounderSection() {
     <section className="py-10 lg:py-24">
       <Container className="flex flex-col-reverse md:flex-row">
 
-        <div className="md:w-[80%] bg-[#0d1b3d] pt-36 md:pt-5 pl-5 py-5 md:pl-10 2xl:pl-32 flex flex-col justify-center">
+        <div className="md:w-[80%] bg-[#0d1b3d] pt-36 md:pt-5 pl-5 py-5 md:pl-10 2xl:pl-24 2xl:py-24 flex flex-col justify-center">
           <p className="mb-3 text-sm uppercase tracking-[3px] text-[#d69a2d]">
             Chairman & Founder
           </p>
