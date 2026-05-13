@@ -182,7 +182,7 @@ export default function ContactSection() {
               <div className="flex items-start gap-4">
                 <Phone className="mt-1 size-5 text-[#d69a2d]" />
                 <p>
-                  +96 65490 22228
+                  00 966 54 490 2850
                 </p>
               </div>
 
@@ -199,7 +199,7 @@ export default function ContactSection() {
                 <p>
                   YASPN Global Company
                   <br />
-                  Building No:3277 Koob Ibn Malik, Al Amamrah Dist.,Dammam, Kingdom of Saudi Arabia
+                  Building No:3277 Koob Ibn Malik, Al Amamrah Dist.,Dammam, Kingdom of <br /> Saudi Arabia
                   <br />
                   Postal Code:32415
                 </p>
