@@ -187,16 +187,16 @@ export default function ContactSection() {
               </div>
 
               <div className="flex items-start gap-4">
-                <Mail className="size-4 text-[#d69a2d]" />
+                <Mail className="size-4 mt-1 text-[#d69a2d]" />
                 <p>
                   info@yaspin.com
                 </p>
                 
               </div>
                  <div className="flex items-start gap-4">
-                <Mail className="size-4 text-[#d69a2d]" />
+                <Mail className="size-4 mt-1 text-[#d69a2d]" />
                 <p>
-                  <samp></samp>ales@yaspin.com
+                  <samp></samp>sales@yaspin.com
                 </p>
                 
               </div>
