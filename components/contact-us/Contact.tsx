@@ -1,15 +1,35 @@
 "use client";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "sonner";
 
 import { sendContactMessage } from "@/services/contact.api";
 import Container from "../layout/Container";
 import AnimatedLine from "../ui/animatedLine";
+import { getServices } from "@/services/service.api";
 
 const Contact = () => {
   const [loading, setLoading] =
     useState(false);
+
+  const [services, setServices] =
+    useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchServices =
+      async () => {
+        try {
+          const data =
+            await getServices();
+
+          setServices(data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+    fetchServices();
+  }, []);
 
   const [formData, setFormData] =
     useState({
@@ -218,17 +238,17 @@ const Contact = () => {
                       />
                     </svg>
                   ),
-              text: (
-  <>
-    <p>
-      YASPN Global Company
-      <br />
-      Building No:3277 Koob Ibn Malik, Al Amamrah Dist., Dammam, Kingdom of Saudi Arabia
-      <br />
-      Postal Code:32415
-    </p>
-  </>
-),
+                  text: (
+                    <>
+                      <p>
+                        YASPN Global Company
+                        <br />
+                        Building No:3277 Koob Ibn Malik, Al Amamrah Dist., Dammam, Kingdom of Saudi Arabia
+                        <br />
+                        Postal Code:32415
+                      </p>
+                    </>
+                  ),
                 },
               ].map((item, index) => (
 
@@ -298,6 +318,9 @@ const Contact = () => {
 
                 <input
                   type="text"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleChange}
                   placeholder="Last Name*"
                   className="bg-[#1A1A1A] h-14 px-5 text-white placeholder:text-gray-400 outline-none border border-transparent focus:border-[#D89A1D]"
                 />
@@ -306,6 +329,9 @@ const Contact = () => {
               {/* Email */}
               <input
                 type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
                 placeholder="Email Address*"
                 className="w-full bg-[#1A1A1A] h-14 px-5 text-white placeholder:text-gray-400 outline-none border border-transparent focus:border-[#D89A1D]"
               />
@@ -313,6 +339,9 @@ const Contact = () => {
               {/* Phone */}
               <input
                 type="text"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
                 placeholder="Phone"
                 className="w-full bg-[#1A1A1A] h-14 px-5 text-white placeholder:text-gray-400 outline-none border border-transparent focus:border-[#D89A1D]"
               />
@@ -320,6 +349,9 @@ const Contact = () => {
               {/* Company */}
               <input
                 type="text"
+                name="company"
+                value={formData.company}
+                onChange={handleChange}
                 placeholder="Company Name"
                 className="w-full bg-[#1A1A1A] h-14 px-5 text-white placeholder:text-gray-400 outline-none border border-transparent focus:border-[#D89A1D]"
               />
@@ -331,15 +363,26 @@ const Contact = () => {
                 onChange={handleChange}
                 className="w-full bg-[#1A1A1A] h-14 px-5 text-gray-400 outline-none border border-transparent focus:border-[#D89A1D]"
               >
-                <option>Service Interested In</option>
-                <option>Infrastructure</option>
-                <option>Sports Development</option>
-                <option>Urban Development</option>
+                <option value="">
+                  Service Interested In
+                </option>
+
+                {services.map((service: any) => (
+                  <option
+                    key={service._id}
+                    value={service.title}
+                  >
+                    {service.title}
+                  </option>
+                ))}
               </select>
 
               {/* Location */}
               <input
                 type="text"
+                name="location"
+                value={formData.location}
+                onChange={handleChange}
                 placeholder="Project Location"
                 className="w-full bg-[#1A1A1A] h-14 px-5 text-white placeholder:text-gray-400 outline-none border border-transparent focus:border-[#D89A1D]"
               />
