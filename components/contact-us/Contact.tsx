@@ -1,15 +1,105 @@
 "use client";
-
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { toast } from "sonner";
+
+import { sendContactMessage } from "@/services/contact.api";
 import Container from "../layout/Container";
 import AnimatedLine from "../ui/animatedLine";
+import { getServices } from "@/services/service.api";
 
 const Contact = () => {
+  const [loading, setLoading] =
+    useState(false);
+
+  const [services, setServices] =
+    useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchServices =
+      async () => {
+        try {
+          const data =
+            await getServices();
+
+          setServices(data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+    fetchServices();
+  }, []);
+
+  const [formData, setFormData] =
+    useState({
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      company: "",
+      service: "",
+      location: "",
+      message: "",
+    });
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement |
+      HTMLTextAreaElement |
+      HTMLSelectElement
+    >
+  ) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (
+    e: React.FormEvent
+  ) => {
+    e.preventDefault();
+
+    try {
+      setLoading(true);
+
+      const res =
+        await sendContactMessage(
+          formData
+        );
+
+      if (res?.success) {
+        toast.success(
+          "Inquiry sent successfully"
+        );
+
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          company: "",
+          service: "",
+          location: "",
+          message: "",
+        });
+      }
+    } catch (error: any) {
+      toast.error(
+        error?.response?.data?.message ||
+        "Failed to send inquiry"
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section className="relative w-full bg-[#0F1D3A] pt-40 pb-52 text-white">
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          
+
           {/* ───────────────── LEFT CONTENT ───────────────── */}
           <div className="max-w-lg">
 
@@ -150,10 +240,10 @@ const Contact = () => {
                   ),
                   text: (
                     <>
-                     <p>
+                      <p>
                         YASPN Global Company
                         <br />
-                        Building No:3277 Koob Ibn Malik, Al Amamrah Dist.,Dammam, Kingdom of Saudi Arabia
+                        Building No:3277 Koob Ibn Malik, Al Amamrah Dist., Dammam, Kingdom of Saudi Arabia
                         <br />
                         Postal Code:32415
                       </p>
@@ -161,7 +251,7 @@ const Contact = () => {
                   ),
                 },
               ].map((item, index) => (
-                
+
                 <motion.div
                   key={index}
                   initial={{
@@ -183,7 +273,7 @@ const Contact = () => {
                   }}
                   className="flex items-start gap-5 transition-all duration-300"
                 >
-                  
+
                   {/* Icon */}
                   <motion.div
                     animate={{
@@ -213,18 +303,24 @@ const Contact = () => {
 
           {/* ───────────────── FORM SECTION ───────────────── */}
           <div className="bg-black p-8 md:p-10 z-20">
-            <form className="space-y-5">
-              
+            <form onSubmit={handleSubmit} className="space-y-5">
+
               {/* Name Fields */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <input
                   type="text"
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleChange}
                   placeholder="First Name*"
                   className="bg-[#1A1A1A] h-14 px-5 text-white placeholder:text-gray-400 outline-none border border-transparent focus:border-[#D89A1D]"
                 />
 
                 <input
                   type="text"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleChange}
                   placeholder="Last Name*"
                   className="bg-[#1A1A1A] h-14 px-5 text-white placeholder:text-gray-400 outline-none border border-transparent focus:border-[#D89A1D]"
                 />
@@ -233,6 +329,9 @@ const Contact = () => {
               {/* Email */}
               <input
                 type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
                 placeholder="Email Address*"
                 className="w-full bg-[#1A1A1A] h-14 px-5 text-white placeholder:text-gray-400 outline-none border border-transparent focus:border-[#D89A1D]"
               />
@@ -240,6 +339,9 @@ const Contact = () => {
               {/* Phone */}
               <input
                 type="text"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
                 placeholder="Phone"
                 className="w-full bg-[#1A1A1A] h-14 px-5 text-white placeholder:text-gray-400 outline-none border border-transparent focus:border-[#D89A1D]"
               />
@@ -247,29 +349,49 @@ const Contact = () => {
               {/* Company */}
               <input
                 type="text"
+                name="company"
+                value={formData.company}
+                onChange={handleChange}
                 placeholder="Company Name"
                 className="w-full bg-[#1A1A1A] h-14 px-5 text-white placeholder:text-gray-400 outline-none border border-transparent focus:border-[#D89A1D]"
               />
 
               {/* Select */}
               <select
+                name="service"
+                value={formData.service}
+                onChange={handleChange}
                 className="w-full bg-[#1A1A1A] h-14 px-5 text-gray-400 outline-none border border-transparent focus:border-[#D89A1D]"
               >
-                <option>Service Interested In</option>
-                <option>Infrastructure</option>
-                <option>Sports Development</option>
-                <option>Urban Development</option>
+                <option value="">
+                  Service Interested In
+                </option>
+
+                {services.map((service: any) => (
+                  <option
+                    key={service._id}
+                    value={service.title}
+                  >
+                    {service.title}
+                  </option>
+                ))}
               </select>
 
               {/* Location */}
               <input
                 type="text"
+                name="location"
+                value={formData.location}
+                onChange={handleChange}
                 placeholder="Project Location"
                 className="w-full bg-[#1A1A1A] h-14 px-5 text-white placeholder:text-gray-400 outline-none border border-transparent focus:border-[#D89A1D]"
               />
 
               {/* Message */}
               <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
                 rows={5}
                 placeholder="Message"
                 className="w-full bg-[#1A1A1A] p-5 text-white placeholder:text-gray-400 outline-none border border-transparent focus:border-[#D89A1D] resize-none"
@@ -279,10 +401,13 @@ const Contact = () => {
               <div className="flex justify-end pt-2">
                 <button
                   type="submit"
-                  className="bg-[#D89A1D] hover:bg-[#c58b17] transition-all duration-300 text-white px-8 py-4 rounded-full flex items-center gap-3 font-medium"
+                  disabled={loading}
+                  className="bg-[#D89A1D] hover:bg-[#c58b17] disabled:opacity-70 disabled:cursor-not-allowed transition-all duration-300 text-white px-8 py-4 rounded-full flex items-center gap-3 font-medium"
                 >
-                  Send Inquiry
-                  
+                  {loading
+                    ? "Sending..."
+                    : "Send Inquiry"}
+
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -307,13 +432,13 @@ const Contact = () => {
       </Container>
 
       {/* Bottom SVG Skyline */}
-        <div className="absolute bottom-0 left-0 w-full leading-none">
-          <img
-            src="/skyline-cut-Black.svg"
-            alt="City Skyline"
-            className="block h-[200px] md:h-[300px] lg:h-auto w-full object-cover"
-          />
-        </div>
+      <div className="absolute bottom-0 left-0 w-full leading-none">
+        <img
+          src="/skyline-cut-Black.svg"
+          alt="City Skyline"
+          className="block h-[200px] md:h-[300px] lg:h-auto w-full object-cover"
+        />
+      </div>
     </section>
   );
 };

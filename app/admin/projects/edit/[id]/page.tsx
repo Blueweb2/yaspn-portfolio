@@ -47,32 +47,38 @@ export default function EditProjectPage() {
   const [technologies, setTechnologies] =
     useState<string[]>([]);
 
-const [formData, setFormData] =
-  useState<{
-    title: string;
-    slug: string;
-    description: string;
-    thumbnail: string;
-    category: string;
-    location: string;
-    client: string;
-    completionYear: string;
-    status: "completed" | "ongoing";
-    liveLink: string;
-    order: number;
-  }>({
-    title: "",
-    slug: "",
-    description: "",
-    thumbnail: "",
-    category: "",
-    location: "",
-    client: "",
-    completionYear: "",
-    status: "completed",
-    liveLink: "",
-    order: 0,
-  });
+  const [thumbnailFile, setThumbnailFile] =
+    useState<File | null>(null);
+
+  const [thumbnailPreview, setThumbnailPreview] =
+    useState("");
+
+  const [formData, setFormData] =
+    useState<{
+      title: string;
+      slug: string;
+      description: string;
+      thumbnail: string;
+      category: string;
+      location: string;
+      client: string;
+      completionYear: string;
+      status: "completed" | "ongoing";
+      liveLink: string;
+      order: number;
+    }>({
+      title: "",
+      slug: "",
+      description: "",
+      thumbnail: "",
+      category: "",
+      location: "",
+      client: "",
+      completionYear: "",
+      status: "completed",
+      liveLink: "",
+      order: 0,
+    });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -88,7 +94,8 @@ const [formData, setFormData] =
         setServices(servicesRes);
 
         const project = projectsRes.find(
-          (item: IProject) => item._id === id
+          (item: IProject) =>
+            item._id === id
         );
 
         if (!project) {
@@ -99,47 +106,69 @@ const [formData, setFormData] =
 
         setFormData({
           title: project.title || "",
+
           slug: project.slug || "",
+
           description:
-            project.description ||
-            "",
+            project.description || "",
+
           thumbnail:
-            project.thumbnail ||
-            "",
+            project.thumbnail || "",
+
           category:
-            project.category ||
-            "",
+            project.category || "",
+
           location:
-            project.location ||
-            "",
+            project.location || "",
+
           client:
             project.client || "",
-          completionYear:
-            String(
-              project.completionYear ||
-                ""
-            ),
+
+          completionYear: String(
+            project.completionYear || ""
+          ),
+
           status:
             project.status ||
             "completed",
+
           liveLink:
-            project.liveLink ||
-            "",
+            project.liveLink || "",
+
           order:
             project.order || 0,
         });
 
+        // =========================
+        // THUMBNAIL PREVIEW
+        // =========================
+
+        setThumbnailPreview(
+          project.thumbnail || ""
+        );
+
+        // =========================
+        // FEATURES
+        // =========================
+
         setFeatures(
           project.features?.map(
-            (item: { label: string }) => item.label
+            (item: {
+              label: string;
+            }) => item.label
           ) || []
         );
 
+        // =========================
+        // TECHNOLOGIES
+        // =========================
+
         setTechnologies(
-          project.technologies ||
-            []
+          project.technologies || []
         );
-      } catch {
+      } catch (error) {
+        console.log(error);
+
         toast.error(
           "Failed to fetch project"
         );
@@ -254,10 +283,12 @@ const [formData, setFormData] =
         "description",
         formData.description
       );
-      formDataToSend.append(
-        "thumbnail",
-        formData.thumbnail
-      );
+      if (thumbnailFile) {
+        formDataToSend.append(
+          "thumbnail",
+          thumbnailFile
+        );
+      }
       formDataToSend.append(
         "category",
         formData.category
@@ -325,7 +356,7 @@ const [formData, setFormData] =
 
       toast.error(
         err.response?.data?.message ||
-          "Failed to update project"
+        "Failed to update project"
       );
     } finally {
       setLoading(false);
@@ -455,20 +486,39 @@ const [formData, setFormData] =
           </div>
 
           {/* Thumbnail */}
+          {/* Thumbnail Upload */}
           <div className="md:col-span-2">
             <label className="mb-2 block text-sm font-medium text-zinc-300">
-              Thumbnail URL
+              Thumbnail
             </label>
 
             <input
-              type="text"
-              name="thumbnail"
-              value={
-                formData.thumbnail
-              }
-              onChange={handleChange}
-              className="h-14 w-full rounded-2xl border border-white/10 bg-[#111C36] px-5 text-white outline-none"
+              type="file"
+              accept="image/*"
+              onChange={(e) => {
+                const file =
+                  e.target.files?.[0] || null;
+
+                setThumbnailFile(file);
+
+                if (file) {
+                  setThumbnailPreview(
+                    URL.createObjectURL(file)
+                  );
+                }
+              }}
+              className="block w-full rounded-2xl border border-white/10 bg-[#111C36] p-4 text-white"
             />
+
+            {thumbnailPreview && (
+              <div className="relative mt-5 h-60 w-full overflow-hidden rounded-2xl">
+                <img
+                  src={thumbnailPreview}
+                  alt="Thumbnail Preview"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            )}
           </div>
 
           {/* Description */}
